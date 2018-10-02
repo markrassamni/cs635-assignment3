@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F922269C2162FD3600318BB7 /* PenUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922269B2162FD3600318BB7 /* PenUp.swift */; };
+		F922269E2162FD7C00318BB7 /* PenDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922269D2162FD7C00318BB7 /* PenDown.swift */; };
+		F92226A02162FDA800318BB7 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922269F2162FDA800318BB7 /* Move.swift */; };
+		F92226A22162FDC400318BB7 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A12162FDC400318BB7 /* Turn.swift */; };
+		F92226A42162FE1E00318BB7 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A32162FE1E00318BB7 /* Repeat.swift */; };
+		F92226A62162FE4500318BB7 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A52162FE4500318BB7 /* Variable.swift */; };
+		F92226A82162FE8500318BB7 /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A72162FE8500318BB7 /* Turtle.swift */; };
+		F92226AA216302F900318BB7 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A9216302F900318BB7 /* Rule.swift */; };
+		F92226AC2163042800318BB7 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AB2163042800318BB7 /* Context.swift */; };
+		F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AD21634A3A00318BB7 /* FileParser.swift */; };
+		F92226B0216354B000318BB7 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AF216354B000318BB7 /* Expression.swift */; };
 		F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E202162F98F008C016F /* AppDelegate.swift */; };
 		F9AB2E232162F98F008C016F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E222162F98F008C016F /* ViewController.swift */; };
 		F9AB2E252162F990008C016F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E242162F990008C016F /* Assets.xcassets */; };
@@ -25,6 +36,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F922269B2162FD3600318BB7 /* PenUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenUp.swift; sourceTree = "<group>"; };
+		F922269D2162FD7C00318BB7 /* PenDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenDown.swift; sourceTree = "<group>"; };
+		F922269F2162FDA800318BB7 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		F92226A12162FDC400318BB7 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
+		F92226A32162FE1E00318BB7 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
+		F92226A52162FE4500318BB7 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		F92226A72162FE8500318BB7 /* Turtle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turtle.swift; sourceTree = "<group>"; };
+		F92226A9216302F900318BB7 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		F92226AB2163042800318BB7 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		F92226AD21634A3A00318BB7 /* FileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
+		F92226AF216354B000318BB7 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F9AB2E1D2162F98F008C016F /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E202162F98F008C016F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AB2E222162F98F008C016F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +77,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F922269A2162FD1500318BB7 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				F922269B2162FD3600318BB7 /* PenUp.swift */,
+				F922269D2162FD7C00318BB7 /* PenDown.swift */,
+				F922269F2162FDA800318BB7 /* Move.swift */,
+				F92226A12162FDC400318BB7 /* Turn.swift */,
+				F92226A32162FE1E00318BB7 /* Repeat.swift */,
+				F92226A52162FE4500318BB7 /* Variable.swift */,
+				F92226A9216302F900318BB7 /* Rule.swift */,
+				F92226AF216354B000318BB7 /* Expression.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
 		F9AB2E142162F98F008C016F = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +113,10 @@
 		F9AB2E1F2162F98F008C016F /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				F922269A2162FD1500318BB7 /* Rules */,
+				F92226A72162FE8500318BB7 /* Turtle.swift */,
+				F92226AB2163042800318BB7 /* Context.swift */,
+				F92226AD21634A3A00318BB7 /* FileParser.swift */,
 				F9AB2E202162F98F008C016F /* AppDelegate.swift */,
 				F9AB2E222162F98F008C016F /* ViewController.swift */,
 				F9AB2E242162F990008C016F /* Assets.xcassets */,
@@ -195,8 +236,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92226B0216354B000318BB7 /* Expression.swift in Sources */,
+				F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */,
+				F92226A42162FE1E00318BB7 /* Repeat.swift in Sources */,
+				F92226A82162FE8500318BB7 /* Turtle.swift in Sources */,
+				F92226A62162FE4500318BB7 /* Variable.swift in Sources */,
+				F92226AA216302F900318BB7 /* Rule.swift in Sources */,
 				F9AB2E232162F98F008C016F /* ViewController.swift in Sources */,
+				F922269C2162FD3600318BB7 /* PenUp.swift in Sources */,
+				F922269E2162FD7C00318BB7 /* PenDown.swift in Sources */,
+				F92226A02162FDA800318BB7 /* Move.swift in Sources */,
+				F92226AC2163042800318BB7 /* Context.swift in Sources */,
 				F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */,
+				F92226A22162FDC400318BB7 /* Turn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
