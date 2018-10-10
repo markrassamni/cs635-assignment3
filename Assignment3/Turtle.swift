@@ -10,6 +10,9 @@ import Foundation
 
 class Turtle{
     
+    var currentDirection: Int!
+    var currentLocation: Point!
+    
     // Move the turtle distance units in the current direction and updates the field(s) indicating the current location of the turtle. The method does not draw on the screen.
     func move(distance: Int){
         

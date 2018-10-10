@@ -14,7 +14,7 @@ class Move: Expression {
     var leftOperand: Expression
     var rightOperand: Expression
     var description: String{
-        return ""
+        return "" // TODO: Implement
     }
     
     
@@ -25,10 +25,12 @@ class Move: Expression {
     }
     
     // Move the turtle X units in the current direction. X is a positive integer.
-    func evaluate(values: [String : Expression]) -> (x: Double, y: Double) {
+    func evaluate(values: [String : Expression]) -> Location {
         let x = leftOperand.evaluate(values: values).x + rightOperand.evaluate(values: values).x
         let y = leftOperand.evaluate(values: values).y + rightOperand.evaluate(values: values).y
-        return (x,y)
+//        let location = Location
+        let location = Location.init(x: x, y: y, position: (x, y), rotation: 0.0)
+        return location
     }
     
     
