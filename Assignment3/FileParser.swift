@@ -13,6 +13,15 @@ class FileParser {
     var currentLine = 0
     let lines: [String]
     
+    private let moveCommand = "move"
+    private let penUpCommand = "penUp"
+    private let penDownCommand = "penDown"
+    private let turnCommand = "turn"
+    private let repeatCommand = "repeat"
+    private let endRepeat = "end"
+    private let variableInit = "#"
+    
+    
     init?(file: String) {
         guard let filePath = Bundle.main.path(forResource: file, ofType: nil) else { return nil }
         do {
@@ -32,35 +41,35 @@ class FileParser {
         
         // Need to Increment currentLine accordingly
         
-        if line.contains("move") {
+        if line.contains(moveCommand) {
             // Remove everything before the number in the expression
-            guard let index = (line.range(of: "move ")?.upperBound) else { return nil }
+            guard let index = (line.range(of: "\(moveCommand) ")?.upperBound) else { return nil }
             guard let count = Int(line.suffix(from: index)) else { return nil } // dont return nil, will be variable
             print(count)
             // return Move(count)
-        } else if line.contains("penUp"){
+        } else if line.contains(penUpCommand){
             return PenUp()
-        } else if line.contains("penDown"){
+        } else if line.contains(penDownCommand){
             return PenDown()
-        } else if line.contains("turn"){
+        } else if line.contains(turnCommand){
             // Remove everything before the number in the expression
-            guard let index = (line.range(of: "turn ")?.upperBound) else { return nil }
+            guard let index = (line.range(of: "\(turnCommand) ")?.upperBound) else { return nil }
             guard let count = Int(line.suffix(from: index)) else { return nil } // dont return nil, will be a variable
             print(count)
             // return Turn(count)
-        } else if line.contains("repeat"){
+        } else if line.contains(repeatCommand){
             // have to parse to find "end" and increment currentLine appropriate # times
             // Need to handle all expressions in the repeat, return array of expressions?
             // refactor to call this method with the array
             
             //Find the next occurence of "end" and get its index
-            let endIndex = lines[currentLine..<lines.count].enumerated().filter{$0.element == "end"}.map{$0.offset}.first
+            let endIndex = lines[currentLine..<lines.count].enumerated().filter{$0.element == endRepeat }.map{$0.offset}.first
             guard let endLine = endIndex else { return nil }
             let repeatedLines = lines[currentLine+1..<endLine]
             print(repeatedLines)
             
             
-            guard let index = (line.range(of: "repeat ")?.upperBound) else { return nil }
+            guard let index = (line.range(of: "\(repeatCommand) ")?.upperBound) else { return nil }
             guard let count = Int(line.suffix(from: index)) else { return nil } // dont return nil, will be variable
             print(count)
             //Repeat(count, expressions)
@@ -68,8 +77,8 @@ class FileParser {
             
             
 
-        } else if line.contains("#"){
-            guard let index = (line.range(of: "#")?.upperBound) else { return nil }
+        } else if line.contains(variableInit){
+            guard let index = (line.range(of: variableInit)?.upperBound) else { return nil }
             let name = String(line.suffix(from: index))
             let _ = Variable(name: name)
         } else {
