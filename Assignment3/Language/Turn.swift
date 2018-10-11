@@ -11,18 +11,20 @@ import Foundation
 class Turn: Expression {
     
     
-    func evaluate(values: [String : Expression]) -> Location {
-        return Location(x: 0, y: 0, position: (0.0, 0.0), rotation: 0.0)
-    }
     
+    private(set) var degrees: Int
     
     var description: String {
-        return "" //TODO: Implement
+        return "Turn \(degrees) degrees."
     }
     
     
-    // Turn the direction of the turtle X degrees.
+    init(degrees: Int) {
+        self.degrees = degrees
+    }
     
+    // Turn the direction of the turtle X degrees.
+    /*
     var leftOperand: Expression
     var rightOperand: Expression
     
@@ -30,11 +32,22 @@ class Turn: Expression {
         self.leftOperand = leftOperand
         self.rightOperand = rightOperand
     }
+ */
     
+    func evaluate(values: Context) {
+        
+    }
+    
+    /*
     func evaluate(values: [String : Expression]) -> (x: Double, y: Double) {
         let x = leftOperand.evaluate(values: values).x + rightOperand.evaluate(values: values).x
         let y = leftOperand.evaluate(values: values).y + rightOperand.evaluate(values: values).y
         return (x, y)
     }
+ 
+ func evaluate(values: [String : Expression]) -> Location {
+ return Location(x: 0, y: 0, position: (0.0, 0.0), rotation: 0.0)
+ }
+ */
     
 }

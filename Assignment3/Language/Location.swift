@@ -9,9 +9,6 @@
 import Foundation
 
 struct Location {
-    // TODO: use x y or tuple 
-    var x: Double
-    var y: Double
-    var position: (x: Double, y: Double)
+    var position: Point
     var rotation: Double
 }

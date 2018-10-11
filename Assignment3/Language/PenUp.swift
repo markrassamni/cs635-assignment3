@@ -8,18 +8,30 @@
 
 import Foundation
 
-class PenUp: Rule {
-    
-    var description: String {
-        return ""
-    }
-    
-    func evaluate(values: Context) -> Bool {
-        return true
-    }
-    
+class PenUp: Expression {
     
     // When the pen is up and the turtle moves nothing is drawn.
+    
+    /*
+    func evaluate(values: [String : Expression]) -> Location {
+        return Location(x: 0.0, y: 0.0, position: (x: 0.0, y: 0.0), rotation: 0.0)
+    }
+ */
+    func evaluate(values: Context) {
+        
+    }
+    
+    
+    var description: String {
+        return "Pen picked up."
+    }
+    
+//    func evaluate(values: Context) -> Bool {
+//        return true
+//    }
+    
+    
+    
     
     
 }

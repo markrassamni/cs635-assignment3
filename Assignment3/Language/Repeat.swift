@@ -8,7 +8,24 @@
 
 import Foundation
 
-class Repeat {
+class Repeat: Expression {
+    
+    private(set) var expressions: [Expression]
+    private(set) var count: Int
+    
+    var description: String {
+        return "Repeat \(expressions) \(count) times" 
+    }
+    
+    
+    init(expressions: [Expression], repeatCount count: Int){
+        self.expressions = expressions
+        self.count = count
+    }
+    
+    func evaluate(values: Context) {
+        
+    }
     
     /*
      repeat k
