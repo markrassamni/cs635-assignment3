@@ -46,9 +46,8 @@ class FileParser {
         guard var currentExpression = line.components(separatedBy: " ").first else { return nil }
         
         //Insert space after # in variable to handle reading value in switch below
-        if currentExpression.first == "#"{ //also make sure it is only 1 word. do not want #side 12 421 man
-            let name = currentExpression.dropFirst()
-            currentExpression = "# \(name)"
+        if String(currentExpression.first!) == variableInit {
+            currentExpression = variableInit
         } else {
             currentExpression = currentExpression.lowercased()
         }
@@ -82,15 +81,14 @@ class FileParser {
                 // variable, string
             }
         case repeatCommand.lowercased():
-            //Find the line on which this repeat block ends
-            let endIndex = lines[currentLine..<lines.count].enumerated().filter{$0.element.lowercased() == endRepeat.lowercased() }.map{$0.offset}.first
-            guard let endLine = endIndex else { return nil }
+            guard line.components(separatedBy: " ").count == 2 else { return nil }
             
-            let repeatedLines = lines.enumerated().filter{$0.offset > currentLine && $0.offset < endLine }.map{$0.element}
+            let optionalEndIndex = lines[currentLine..<lines.count].enumerated().filter{$0.element.lowercased() == endRepeat.lowercased() }.map{$0.offset}.first
+            guard let endIndex = optionalEndIndex else { return nil }
+            
+            let repeatedLines = lines.enumerated().filter{$0.offset > currentLine && $0.offset < endIndex }.map{$0.element}
             print(repeatedLines)
             
-            //Do not guard this... count = 1 not 2, counting repeat line not command body line. nvm repeat has a count
-            guard line.components(separatedBy: " ").count == 2 else { return nil } //TODO: move to top of case
             let value = line.components(separatedBy: " ")[1]
             
             if let count = Int(value){
@@ -111,56 +109,6 @@ class FileParser {
         default:
             return nil
         }
-        
-        
-        /*
-        if line.contains(moveCommand) {
-            // Remove everything before the number in the expression
-            guard let index = (line.range(of: "\(moveCommand) ")?.upperBound) else { return nil }
-            guard let count = Int(line.suffix(from: index)) else { return nil } // dont return nil, will be variable
-            print(count)
-            // return Move(count)
-        } else if line.contains(penUpCommand){
-            return PenUp()
-        } else if line.contains(penDownCommand){
-            return PenDown()
-        } else if line.contains(turnCommand){
-            // Remove everything before the number in the expression
-            guard let index = (line.range(of: "\(turnCommand) ")?.upperBound) else { return nil }
-            guard let count = Int(line.suffix(from: index)) else { return nil } // dont return nil, will be a variable
-            print(count)
-            // return Turn(count)
-        } else if line.contains(repeatCommand){
-            // have to parse to find "end" and increment currentLine appropriate # times
-            // Need to handle all expressions in the repeat, return array of expressions?
-            // refactor to call this method with the array
-            
-            
-            //Find the next occurence of "end" and get its index
-            let endIndex = lines[currentLine..<lines.count].enumerated().filter{$0.element == endRepeat }.map{$0.offset}.first
-            guard let endLine = endIndex else { return nil }
-            let repeatedLines = lines[currentLine+1..<endLine]
-            print(repeatedLines)
-            
-            
-            guard let index = (line.range(of: "\(repeatCommand) ")?.upperBound) else { return nil }
-            guard let count = Int(line.suffix(from: index)) else { return nil } // dont return nil, will be variable
-            print(count)
-            //Repeat(count, expressions)
-            
-            
-            
-
-        } else if line.contains(variableInit){
-            guard let index = (line.range(of: variableInit)?.upperBound) else { return nil }
-            let name = String(line.suffix(from: index))
-            let _ = Variable(name: name)
-        } else {
-            // line contains predefined variable
-            //nvm should have commend before var, need to handle if line has var instead of number in ifs above
-        }
-        */
-        
         
         return nil
     }
