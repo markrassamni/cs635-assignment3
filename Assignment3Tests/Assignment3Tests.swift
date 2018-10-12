@@ -13,10 +13,24 @@ class Assignment3Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        //Test with repeat 1 times, repeat 0 times
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func testParsing(){
+        guard let fileParser = FileParser(file: "test1.txt") else {
+            XCTAssertTrue(false)
+            return
+        }
+        for _ in 0..<fileParser.lines.count {
+            let expression = fileParser.parseNextCommand()
+            print(expression ?? "Not returned")
+        }
+        
     }
 
     func testExample() {
