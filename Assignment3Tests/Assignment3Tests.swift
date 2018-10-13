@@ -26,12 +26,23 @@ class Assignment3Tests: XCTestCase {
             XCTAssertTrue(false)
             return
         }
+        let statements = fileParser.parse()
+        print(statements ?? "No statements")
+    }
+    
+    /*
+    func testParsing(){
+        guard let fileParser = FileParser(file: "test1.txt") else {
+            XCTAssertTrue(false)
+            return
+        }
         for _ in 0..<fileParser.lines.count {
             let expression = fileParser.parseNextCommand()
             print(expression ?? "Not returned")
         }
         
     }
+     */
 
     func testExample() {
         // This is an example of a functional test case.

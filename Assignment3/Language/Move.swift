@@ -14,14 +14,20 @@ class Move: Statement, Expression {
 //    var leftOperand: Expression
 //    var rightOperand: Expression
     
-    private(set) var distance: Int
-    
-    var description: String{
+    // Shoulc change to lets?
+    private(set) var distance: Int!
+    private(set) var variableName: String?
+ 
+    var description: String {
         return "Move \(distance) units."
     }
     
     init(distance: Int){
         self.distance = distance
+    }
+    
+    init(variableName: String) {
+        self.variableName = variableName
     }
     
     /*

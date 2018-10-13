@@ -13,7 +13,7 @@
 		F92226A02162FDA800318BB7 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922269F2162FDA800318BB7 /* Move.swift */; };
 		F92226A22162FDC400318BB7 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A12162FDC400318BB7 /* Turn.swift */; };
 		F92226A42162FE1E00318BB7 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A32162FE1E00318BB7 /* Repeat.swift */; };
-		F92226A62162FE4500318BB7 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A52162FE4500318BB7 /* Variable.swift */; };
+		F92226A62162FE4500318BB7 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A52162FE4500318BB7 /* Assignment.swift */; };
 		F92226A82162FE8500318BB7 /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226A72162FE8500318BB7 /* Turtle.swift */; };
 		F92226AC2163042800318BB7 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AB2163042800318BB7 /* Context.swift */; };
 		F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AD21634A3A00318BB7 /* FileParser.swift */; };
@@ -46,7 +46,7 @@
 		F922269F2162FDA800318BB7 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		F92226A12162FDC400318BB7 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 		F92226A32162FE1E00318BB7 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
-		F92226A52162FE4500318BB7 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		F92226A52162FE4500318BB7 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		F92226A72162FE8500318BB7 /* Turtle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turtle.swift; sourceTree = "<group>"; };
 		F92226AB2163042800318BB7 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		F92226AD21634A3A00318BB7 /* FileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 				F922269F2162FDA800318BB7 /* Move.swift */,
 				F92226A12162FDC400318BB7 /* Turn.swift */,
 				F92226A32162FE1E00318BB7 /* Repeat.swift */,
-				F92226A52162FE4500318BB7 /* Variable.swift */,
+				F92226A52162FE4500318BB7 /* Assignment.swift */,
 				F9D653B72171574000B028E6 /* Statement.swift */,
 				F92226AF216354B000318BB7 /* Expression.swift */,
 				F9AE167C2165A02300778BD9 /* Location.swift */,
@@ -275,7 +275,7 @@
 				F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */,
 				F92226A42162FE1E00318BB7 /* Repeat.swift in Sources */,
 				F92226A82162FE8500318BB7 /* Turtle.swift in Sources */,
-				F92226A62162FE4500318BB7 /* Variable.swift in Sources */,
+				F92226A62162FE4500318BB7 /* Assignment.swift in Sources */,
 				F9AE167D2165A02300778BD9 /* Location.swift in Sources */,
 				F9AB2E232162F98F008C016F /* ViewController.swift in Sources */,
 				F922269C2162FD3600318BB7 /* PenUp.swift in Sources */,

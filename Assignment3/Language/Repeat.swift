@@ -10,21 +10,27 @@ import Foundation
 
 class Repeat: Statement {
     
-    let expressions: [Expression]
-    let count: Int
+    let statements: [Statement]
+    private(set) var count: Int!
+    private(set) var variableName: String?
     
     var description: String {
-        return "Repeat \(expressions) \(count) times" 
+        return "Repeat \(statements) \(count) times"
     }
     
     
-    init(expressions: [Expression], repeatCount count: Int){
-        self.expressions = expressions
+    init(statements: [Statement], repeatCount count: Int){
+        self.statements = statements
         self.count = count
     }
     
+    init(statements: [Statement], variableName: String) {
+        self.statements = statements
+        self.variableName = variableName
+    }
+    
     func evaluate(values: Context) {
-        
+        // check if count >0, otherwise do nothing
     }
     
     /*

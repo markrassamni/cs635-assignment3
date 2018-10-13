@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Statement: CustomStringConvertible {
-    var description: String {get}
+    var description: String { get } // Swift toString()
 //    func interpret(turtle: Turtle, context: Context)
-    //    func accept(visitor: Vistor) // TODO: Add visitor acceptance
+    //    func accept(visitor: Vistor) // TODO: Add visitor acceptance after creating visitor class
 }

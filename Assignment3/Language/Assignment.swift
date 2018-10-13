@@ -1,5 +1,5 @@
 //
-//  Variable.swift
+//  Assignment.swift
 //  Assignment3
 //
 //  Created by Mark Rassamni on 10/1/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Variable: Statement, Expression {
+class Assignment: Statement, Expression {
     
     // #K = Y
 //    Y is an integer. The variable $K can be used in move, turn and repeat commands.

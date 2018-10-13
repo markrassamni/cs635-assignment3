@@ -12,7 +12,8 @@ class Turn: Statement {
     
     
     
-    private(set) var degrees: Int
+    private(set) var degrees: Int!
+    private(set) var variableName: String?
     
     var description: String {
         return "Turn \(degrees) degrees."
@@ -21,6 +22,10 @@ class Turn: Statement {
     
     init(degrees: Int) {
         self.degrees = degrees
+    }
+    
+    init(variableName: String){
+        self.variableName = variableName
     }
     
     // Turn the direction of the turtle X degrees.
