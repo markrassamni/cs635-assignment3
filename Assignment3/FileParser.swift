@@ -41,9 +41,8 @@ class FileParser {
         var statements = [Statement]()
         
         while currentLine < lines.count {
-            let line = lines[currentLine] // combine this and current expr... add .comp sep by here, dont put .first here, switch line.first, refactor inside cases to use line instead of guarding stuff
-            let fullStatement = line.components(separatedBy: " ").filter{ $0 != "" }
-            guard var statementType = fullStatement.first else {
+            let lineComponents = lines[currentLine].components(separatedBy: " ").filter{ $0 != "" }
+            guard var statementType = lineComponents.first else {
                 // This allows skipping blank lines. Necessary because when using .txt files in xcode (or any file) it will automatically add an empty line to the last line of the file that cannot be removed.
                 currentLine += 1
                 continue
@@ -56,8 +55,8 @@ class FileParser {
             switch statementType {
             case moveCommand.lowercased():
                 currentLine += 1
-                guard fullStatement.count == 2 else { return nil }
-                let value = fullStatement[1]
+                guard lineComponents.count == 2 else { return nil }
+                let value = lineComponents[1]
                 if let distance = Int(value){
                     statements.append(Move(distance: distance))
                 } else {
@@ -71,16 +70,16 @@ class FileParser {
                 statements.append(PenDown())
             case turnCommand.lowercased():
                 currentLine += 1
-                guard fullStatement.count == 2 else { return nil }
-                let value = fullStatement[1]
+                guard lineComponents.count == 2 else { return nil }
+                let value = lineComponents[1]
                 if let degrees = Int(value){
                     statements.append(Turn(degrees: degrees))
                 } else {
                     statements.append(Turn(variableName: value))
                 }
             case repeatCommand.lowercased():
-                guard fullStatement.count == 2 else { return nil }
-                let repeatCount = fullStatement[1]
+                guard lineComponents.count == 2 else { return nil }
+                let repeatCount = lineComponents[1]
                 let optionalEndIndex = lines[currentLine..<lines.count].enumerated().filter {$0.element.lowercased() == endRepeat.lowercased()}.map{$0.offset}.first
                 guard let endIndex = optionalEndIndex else { return nil }
                 let repeatedLines = lines.enumerated().filter{$0.offset > currentLine && $0.offset < endIndex }.map{$0.element}
@@ -93,7 +92,8 @@ class FileParser {
                 }
             case assignment:
                 currentLine += 1
-                statements.append(Assignment(name: line))
+                guard let variable = lineComponents.first else { return nil }
+                statements.append(Assignment(name: variable))
             default:
                 return nil
             }
