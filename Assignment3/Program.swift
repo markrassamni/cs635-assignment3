@@ -10,10 +10,10 @@ import Foundation
 
 class Program{
     
-    var expressionList = [Expression]()
+    private(set) var statements = [Statement]()
     
-    func add(expression: Expression){
-        expressionList.append(expression)
+    func add(statement: Statement){
+        statements.append(statement)
     }
     
     func accept(){ // pass in visitor parameter
