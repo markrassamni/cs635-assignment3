@@ -19,14 +19,15 @@ class FileParser {
     private let endRepeat = "end"
     private let assignment = "#"
     
-    func parse(file: String) -> [Statement]? {
+    func parse(file: String) -> Program? {
         guard let filePath = Bundle.main.path(forResource: file, ofType: nil) else { return nil }
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             self.lines = data.components(separatedBy: .newlines)
         } catch { return nil }
         guard let lines = self.lines else { return nil }
-        return convertToStatements(lines: lines)
+        guard let statements = convertToStatements(lines: lines) else { return nil }
+        return buildProgram(fromStatements: statements)
     }
     
     // If a single line is failed to be converted to a statement, function will return no previous statements
@@ -92,5 +93,13 @@ class FileParser {
             }
         }
         return statements
+    }
+    
+    private func buildProgram(fromStatements statements: [Statement]) -> Program {
+        let ast = Program()
+        for statement in statements {
+            ast.add(statement: statement)
+        }
+        return ast
     }
 }

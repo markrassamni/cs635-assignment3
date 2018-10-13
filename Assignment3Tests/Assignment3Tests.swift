@@ -26,9 +26,13 @@ class Assignment3Tests: XCTestCase {
     
     func testParsing(){
         // TODO: Make statements equatable
-        let statements = fileParser.parse(file: "test1.txt")
-        XCTAssertNotNil(statements)
+        let ast = fileParser.parse(file: "test1.txt")
+        XCTAssertNotNil(ast)
         let expectedStatements: [Statement] = [Repeat(statements: [Move(distance: 10), Move(distance: 15), Move(distance: 20)], repeatCount: 2), Move(distance: 10), Turn(degrees: 10), Move(distance: 10)]
+        let expectedAST = Program()
+        for statement in expectedStatements {
+            expectedAST.add(statement: statement)
+        }
         /*
         XCTAssertEqual(statements?.count, expectedStatements.count)
         for (index, statement) in expectedStatements.enumerated() {
