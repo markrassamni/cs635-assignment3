@@ -17,7 +17,7 @@ class Assignment: Statement, Expression {
     private(set) var tuple: (name: String, value: Int)!
     
     var description: String {
-        return ""
+        return "Assign \(name) as a variable."
     }
     
     func evaluate(values: Context) -> Int? {

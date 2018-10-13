@@ -19,7 +19,10 @@ class Move: Statement, Expression {
     private(set) var variableName: String?
  
     var description: String {
-        return "Move \(distance) units."
+        if let dist = distance {
+            return "Move \(dist) units."
+        }
+        return "Move \(String(describing: variableName)) units."
     }
     
     init(distance: Int){

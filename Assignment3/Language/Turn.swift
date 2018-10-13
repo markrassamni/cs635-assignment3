@@ -16,9 +16,11 @@ class Turn: Statement {
     private(set) var variableName: String?
     
     var description: String {
-        return "Turn \(degrees) degrees."
+        if let turnDegrees = degrees {
+            return "Turn \(turnDegrees) degrees."
+        }
+        return "Turn \(String(describing: variableName)) degrees."
     }
-    
     
     init(degrees: Int) {
         self.degrees = degrees

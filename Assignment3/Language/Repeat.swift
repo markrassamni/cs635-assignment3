@@ -15,9 +15,11 @@ class Repeat: Statement {
     private(set) var variableName: String?
     
     var description: String {
-        return "Repeat \(statements) \(count) times"
+        if let repeatcount = count {
+            return "Repeat \(statements) \(repeatcount) times"
+        }
+        return "Repeat \(statements) \(String(describing: variableName)) times."
     }
-    
     
     init(statements: [Statement], repeatCount count: Int){
         self.statements = statements
