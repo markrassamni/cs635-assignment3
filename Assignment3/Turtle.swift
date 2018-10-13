@@ -10,45 +10,40 @@ import Foundation
 
 class Turtle{
     
-    var currentDirection: Int!
-    var currentLocation: Point!
+    private(set) var currentDirection: Int = 0
+    private(set) var currentLocation = Point(x: 0.0, y: 0.0)
+    private(set) var isPenDown = false
     
-    // Move the turtle distance units in the current direction and updates the field(s) indicating the current location of the turtle. The method does not draw on the screen.
-    func move(distance: Int){
-        
+    func move(distance: Int) {
+        if isPenDown {
+            let radians = Double(currentDirection) * .pi / 180
+            let deltaX = cos(radians) * Double(distance)
+            let deltaY = sin(radians) * Double(distance)
+            currentLocation = Point(x: currentLocation.x + deltaX, y: currentLocation.y + deltaY)
+        }
     }
     
-    // Add “degrees” to the current heading of the turtle.
     func turn(degrees: Int){
-        
+        currentDirection += degrees
     }
     
-    // Lift the pen up.
     func penUp(){
-        
+        isPenDown = false
     }
     
-    // Put the pen down.
     func penDown(){
-        
+        isPenDown = true
     }
     
-    
-    // Return true if pen is up, false if the pen is down.
     func isPenUp() -> Bool {
-        return true
+        return !isPenDown
     }
     
-    // Returns the current direction of the turtle.
     func direction() -> Int {
-        return 0
+        return currentDirection
     }
     
-    // Returns the current location of the turtle.
-    func location() -> (Double, Double){
-        return (0.0, 0.0)
+    func location() -> Point {
+        return currentLocation
     }
-    
-    
-    
 }
