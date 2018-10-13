@@ -10,7 +10,7 @@ import Foundation
 
 class FileParser {
     
-    let lines: [String]
+    private(set) var lines: [String]?
     private let moveCommand = "move"
     private let penUpCommand = "penUp"
     private let penDownCommand = "penDown"
@@ -19,19 +19,13 @@ class FileParser {
     private let endRepeat = "end"
     private let assignment = "#"
     
-    
-    // TODO: Change to remove init. parse func takes file as parameter and does all operations
-    init?(file: String) {
+    func parse(file: String) -> [Statement]? {
         guard let filePath = Bundle.main.path(forResource: file, ofType: nil) else { return nil }
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             self.lines = data.components(separatedBy: .newlines)
-        } catch {
-            return nil
-        }
-    }
-    
-    func parse() -> [Statement]? {
+        } catch { return nil }
+        guard let lines = self.lines else { return nil }
         return convertToStatements(lines: lines)
     }
     
@@ -39,7 +33,6 @@ class FileParser {
     private func convertToStatements(lines: [String]) -> [Statement]? {
         var currentLine = 0
         var statements = [Statement]()
-        
         while currentLine < lines.count {
             let lineComponents = lines[currentLine].components(separatedBy: " ").filter{ $0 != "" }
             guard var statementType = lineComponents.first else {
