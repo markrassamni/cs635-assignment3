@@ -19,11 +19,9 @@
 		F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AD21634A3A00318BB7 /* FileParser.swift */; };
 		F92226B0216354B000318BB7 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AF216354B000318BB7 /* Expression.swift */; };
 		F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E202162F98F008C016F /* AppDelegate.swift */; };
-		F9AB2E232162F98F008C016F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E222162F98F008C016F /* ViewController.swift */; };
 		F9AB2E252162F990008C016F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E242162F990008C016F /* Assets.xcassets */; };
 		F9AB2E282162F990008C016F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E262162F990008C016F /* Main.storyboard */; };
 		F9AB2E342162F990008C016F /* Assignment3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E332162F990008C016F /* Assignment3Tests.swift */; };
-		F9AE167D2165A02300778BD9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AE167C2165A02300778BD9 /* Location.swift */; };
 		F9AE167F2165A29E00778BD9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AE167E2165A29E00778BD9 /* Point.swift */; };
 		F9D653B6217138E200B028E6 /* test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F9D653B5217138E200B028E6 /* test1.txt */; };
 		F9D653B82171574000B028E6 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D653B72171574000B028E6 /* Statement.swift */; };
@@ -53,7 +51,6 @@
 		F92226AF216354B000318BB7 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F9AB2E1D2162F98F008C016F /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E202162F98F008C016F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F9AB2E222162F98F008C016F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F9AB2E242162F990008C016F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9AB2E272162F990008C016F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9AB2E292162F990008C016F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,7 +58,6 @@
 		F9AB2E2F2162F990008C016F /* Assignment3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E332162F990008C016F /* Assignment3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment3Tests.swift; sourceTree = "<group>"; };
 		F9AB2E352162F990008C016F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F9AE167C2165A02300778BD9 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F9AE167E2165A29E00778BD9 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		F9D653B5217138E200B028E6 /* test1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test1.txt; sourceTree = "<group>"; };
 		F9D653B72171574000B028E6 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
@@ -96,10 +92,16 @@
 				F92226A52162FE4500318BB7 /* Assignment.swift */,
 				F9D653B72171574000B028E6 /* Statement.swift */,
 				F92226AF216354B000318BB7 /* Expression.swift */,
-				F9AE167C2165A02300778BD9 /* Location.swift */,
-				F9AE167E2165A29E00778BD9 /* Point.swift */,
 			);
 			path = Language;
+			sourceTree = "<group>";
+		};
+		F97CB8D92172A7C800D1471B /* Text Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9D653B5217138E200B028E6 /* test1.txt */,
+			);
+			path = "Text Files";
 			sourceTree = "<group>";
 		};
 		F9AB2E142162F98F008C016F = {
@@ -123,14 +125,14 @@
 		F9AB2E1F2162F98F008C016F /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				F97CB8D92172A7C800D1471B /* Text Files */,
 				F922269A2162FD1500318BB7 /* Language */,
+				F9AE167E2165A29E00778BD9 /* Point.swift */,
 				F92226A72162FE8500318BB7 /* Turtle.swift */,
 				F912C827216FC96B00531D80 /* Program.swift */,
 				F92226AB2163042800318BB7 /* Context.swift */,
 				F92226AD21634A3A00318BB7 /* FileParser.swift */,
-				F9D653B5217138E200B028E6 /* test1.txt */,
 				F9AB2E202162F98F008C016F /* AppDelegate.swift */,
-				F9AB2E222162F98F008C016F /* ViewController.swift */,
 				F9AB2E242162F990008C016F /* Assets.xcassets */,
 				F9AB2E262162F990008C016F /* Main.storyboard */,
 				F9AB2E292162F990008C016F /* Info.plist */,
@@ -276,8 +278,6 @@
 				F92226A42162FE1E00318BB7 /* Repeat.swift in Sources */,
 				F92226A82162FE8500318BB7 /* Turtle.swift in Sources */,
 				F92226A62162FE4500318BB7 /* Assignment.swift in Sources */,
-				F9AE167D2165A02300778BD9 /* Location.swift in Sources */,
-				F9AB2E232162F98F008C016F /* ViewController.swift in Sources */,
 				F922269C2162FD3600318BB7 /* PenUp.swift in Sources */,
 				F922269E2162FD7C00318BB7 /* PenDown.swift in Sources */,
 				F9D653B82171574000B028E6 /* Statement.swift in Sources */,

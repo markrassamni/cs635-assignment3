@@ -13,3 +13,13 @@ protocol Statement: CustomStringConvertible {
 //    func interpret(turtle: Turtle, context: Context)
     //    func accept(visitor: Vistor) // TODO: Add visitor acceptance after creating visitor class
 }
+
+/*
+ protocol Expression: CustomStringConvertible {
+ var description: String { get } // Swift toString()
+ //    func evaluate(values: [String:Expression]) -> (x: Double, y: Double)
+ //    func evaluate(values: [String: Expression]) -> Location
+ func evaluate(values: Context) -> Int?
+ }
+ 
+ */
