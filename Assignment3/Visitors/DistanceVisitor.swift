@@ -12,13 +12,7 @@ class DistanceVisitor: Visitor {
     
     private(set) var distance: Int = 0
     private(set) var isPenDown: Bool = false
-    var turtle: Turtle
-    var context: Context
-    
-    init(turtle: Turtle, context: Context) {
-        self.turtle = turtle
-        self.context = context
-    }
+    private(set) var context = Context()
     
     // Why do this? Visit program causes it to visit all expressions
     func visit(_ program: Program) {

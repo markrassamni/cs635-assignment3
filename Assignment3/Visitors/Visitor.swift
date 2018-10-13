@@ -9,7 +9,6 @@
 import Foundation
 
 protocol Visitor {
-    var turtle: Turtle { get }
     var context: Context { get }
     func visit(_ program: Program)
     func visit(_ penUp: PenUp)
