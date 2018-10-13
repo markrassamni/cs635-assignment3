@@ -8,10 +8,10 @@
 
 import Foundation
 
-class Repeat: Expression {
+class Repeat: Statement {
     
-    private(set) var expressions: [Expression]
-    private(set) var count: Int
+    let expressions: [Expression]
+    let count: Int
     
     var description: String {
         return "Repeat \(expressions) \(count) times" 

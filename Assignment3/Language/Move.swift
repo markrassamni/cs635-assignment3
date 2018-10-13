@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Move: Expression {
+class Move: Statement, Expression {
     
     
 //    var leftOperand: Expression
@@ -42,8 +42,8 @@ class Move: Expression {
         return location
     }
  */
-    func evaluate(values: Context) {
-        
+    func evaluate(values: Context) -> Int? {
+        return 0
     }
     
     

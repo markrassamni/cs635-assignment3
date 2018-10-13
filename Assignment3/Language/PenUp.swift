@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PenUp: Expression {
+class PenUp: Statement { //TODO: Inherit statement - check all classes
     
     // When the pen is up and the turtle moves nothing is drawn.
     

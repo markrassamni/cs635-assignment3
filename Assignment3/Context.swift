@@ -8,24 +8,15 @@
 
 import Foundation
 
-class Context: Hashable {
+class Context {
     
-    private (set) var values: Dictionary<String, Int>!
+    private (set) var values = Dictionary<String, Int>()
     
-    func getValue(for variableName: String) -> Int? {
-        return values[variableName] ?? nil
+    func getValue(for name: String) -> Int? {
+        return values[name]
     }
     
-    func setValue(variableName: String, value: Int){
-        values[variableName] = value
+    func setValue(for name: String, to value: Int){
+        values[name] = value
     }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(values)
-    }
-    
-    static func == (lhs: Context, rhs: Context) -> Bool {
-        return lhs.values == rhs.values
-    }
-    
 }

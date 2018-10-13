@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Turn: Expression {
+class Turn: Statement {
     
     
     

@@ -35,7 +35,7 @@ class FileParser {
     // pass in array of string expressions and return array of [expression]
     
     // change to parse lines passed in as parameter, another function calls this one line at a time, if func is repeat etc call with lines in repeat block
-    func parseNextCommand() -> Expression? {
+    func parseNextCommand() -> Statement? {
         // How to handle end of file? only check lines.count lines for currentLine 
         // store in class where we are in file, then read next line here
         

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Variable: Expression {
+class Variable: Statement, Expression {
     
     // #K = Y
 //    Y is an integer. The variable $K can be used in move, turn and repeat commands.
@@ -20,8 +20,8 @@ class Variable: Expression {
         return ""
     }
     
-    func evaluate(values: Context) {
-        
+    func evaluate(values: Context) -> Int? {
+        return values.getValue(for: name)
     }
     
     init(name: String) {

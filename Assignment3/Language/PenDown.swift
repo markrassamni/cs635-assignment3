@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PenDown: Expression {
+class PenDown: Statement {
 
 //    When the pen is down and the turtle moves a black line is drawn
     
