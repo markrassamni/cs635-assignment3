@@ -12,20 +12,31 @@ class Assignment: Statement, Expression {
     
     // #K = Y
 //    Y is an integer. The variable $K can be used in move, turn and repeat commands.
-    private(set) var name: String
     
-    private(set) var tuple: (name: String, value: Int)!
+    private(set) var variable: (name: String, value: Int)
     
     var description: String {
-        return "Assign \(name) as a variable."
+        return "Assign \(variable.name) to \(variable.value)."
+    }
+    
+    init(variable: (name: String, value: Int)) {
+        self.variable = variable
+    }
+    
+    convenience init(name: String, value: Int){
+        self.init(variable: (name: name, value: value))
     }
     
     func evaluate(values: Context) -> Int? {
-        return values.getValue(for: name)
+        return values.getValue(for: variable.name)
     }
     
-    init(name: String) {
-        self.name = name
+    func evaluate(context: Context){
+        context.setValue(for: variable.name, to: variable.value)
+    }
+    
+    func accept(visitor: Visitor) {
+        visitor.visit(self)
     }
     
     

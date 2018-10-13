@@ -45,6 +45,10 @@ class Turn: Statement {
         
     }
     
+    func accept(visitor: Visitor) {
+        visitor.visit(self)
+    }
+    
     /*
     func evaluate(values: [String : Expression]) -> (x: Double, y: Double) {
         let x = leftOperand.evaluate(values: values).x + rightOperand.evaluate(values: values).x

@@ -16,8 +16,9 @@ class Program{
         statements.append(statement)
     }
     
-    func accept(){ // pass in visitor parameter
-        
+    func accept(visitor: Visitor){ 
+        for statement in statements {
+            statement.accept(visitor: visitor)
+        }
     }
-    
 }

@@ -35,6 +35,10 @@ class Repeat: Statement {
         // check if count >0, otherwise do nothing
     }
     
+    func accept(visitor: Visitor) {
+        visitor.visit(self)
+    }
+    
     /*
      repeat k
      statement1

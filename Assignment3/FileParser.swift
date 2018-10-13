@@ -51,8 +51,8 @@ class FileParser {
                 currentLine += 1
                 guard lineComponents.count == 2 else { return nil }
                 let value = lineComponents[1]
-                if let distance = Int(value){
-                    statements.append(Move(distance: distance))
+                if let distance = Int(value), let move = Move(distance: distance){
+                    statements.append(move)
                 } else {
                     statements.append(Move(variableName: value))
                 }
@@ -86,8 +86,8 @@ class FileParser {
                 }
             case assignment:
                 currentLine += 1
-                guard let variable = lineComponents.first else { return nil }
-                statements.append(Assignment(name: variable))
+                guard let name = lineComponents.first, let value = Int(lineComponents[1]) else { return nil }
+                statements.append(Assignment(name: name, value: value))
             default:
                 return nil
             }

@@ -11,7 +11,7 @@ import Foundation
 protocol Statement: CustomStringConvertible {
     var description: String { get } // Swift toString()
 //    func interpret(turtle: Turtle, context: Context)
-    //    func accept(visitor: Vistor) // TODO: Add visitor acceptance after creating visitor class
+    func accept(visitor: Visitor)
 }
 
 /*

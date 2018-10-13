@@ -18,6 +18,10 @@
 		F92226AC2163042800318BB7 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AB2163042800318BB7 /* Context.swift */; };
 		F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AD21634A3A00318BB7 /* FileParser.swift */; };
 		F92226B0216354B000318BB7 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92226AF216354B000318BB7 /* Expression.swift */; };
+		F97CB8DD2172AC4E00D1471B /* Visitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8DC2172AC4E00D1471B /* Visitor.swift */; };
+		F97CB8DF2172AE1C00D1471B /* CaretakerVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8DE2172AE1C00D1471B /* CaretakerVisitor.swift */; };
+		F97CB8E12172AE7300D1471B /* DistanceVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8E02172AE7300D1471B /* DistanceVisitor.swift */; };
+		F97CB8E32172B11200D1471B /* Memento.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8E22172B11200D1471B /* Memento.swift */; };
 		F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E202162F98F008C016F /* AppDelegate.swift */; };
 		F9AB2E252162F990008C016F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E242162F990008C016F /* Assets.xcassets */; };
 		F9AB2E282162F990008C016F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E262162F990008C016F /* Main.storyboard */; };
@@ -49,6 +53,10 @@
 		F92226AB2163042800318BB7 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		F92226AD21634A3A00318BB7 /* FileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
 		F92226AF216354B000318BB7 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		F97CB8DC2172AC4E00D1471B /* Visitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visitor.swift; sourceTree = "<group>"; };
+		F97CB8DE2172AE1C00D1471B /* CaretakerVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretakerVisitor.swift; sourceTree = "<group>"; };
+		F97CB8E02172AE7300D1471B /* DistanceVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceVisitor.swift; sourceTree = "<group>"; };
+		F97CB8E22172B11200D1471B /* Memento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memento.swift; sourceTree = "<group>"; };
 		F9AB2E1D2162F98F008C016F /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E202162F98F008C016F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AB2E242162F990008C016F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +112,17 @@
 			path = "Text Files";
 			sourceTree = "<group>";
 		};
+		F97CB8DB2172AC4000D1471B /* Visitors */ = {
+			isa = PBXGroup;
+			children = (
+				F97CB8E22172B11200D1471B /* Memento.swift */,
+				F97CB8DC2172AC4E00D1471B /* Visitor.swift */,
+				F97CB8DE2172AE1C00D1471B /* CaretakerVisitor.swift */,
+				F97CB8E02172AE7300D1471B /* DistanceVisitor.swift */,
+			);
+			path = Visitors;
+			sourceTree = "<group>";
+		};
 		F9AB2E142162F98F008C016F = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +144,7 @@
 		F9AB2E1F2162F98F008C016F /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				F97CB8DB2172AC4000D1471B /* Visitors */,
 				F97CB8D92172A7C800D1471B /* Text Files */,
 				F922269A2162FD1500318BB7 /* Language */,
 				F9AE167E2165A29E00778BD9 /* Point.swift */,
@@ -275,6 +295,7 @@
 				F912C828216FC96B00531D80 /* Program.swift in Sources */,
 				F92226B0216354B000318BB7 /* Expression.swift in Sources */,
 				F92226AE21634A3A00318BB7 /* FileParser.swift in Sources */,
+				F97CB8DF2172AE1C00D1471B /* CaretakerVisitor.swift in Sources */,
 				F92226A42162FE1E00318BB7 /* Repeat.swift in Sources */,
 				F92226A82162FE8500318BB7 /* Turtle.swift in Sources */,
 				F92226A62162FE4500318BB7 /* Assignment.swift in Sources */,
@@ -285,6 +306,9 @@
 				F9AE167F2165A29E00778BD9 /* Point.swift in Sources */,
 				F92226AC2163042800318BB7 /* Context.swift in Sources */,
 				F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */,
+				F97CB8E12172AE7300D1471B /* DistanceVisitor.swift in Sources */,
+				F97CB8E32172B11200D1471B /* Memento.swift in Sources */,
+				F97CB8DD2172AC4E00D1471B /* Visitor.swift in Sources */,
 				F92226A22162FDC400318BB7 /* Turn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

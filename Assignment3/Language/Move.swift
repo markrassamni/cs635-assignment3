@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Move: Statement, Expression {
+class Move: Statement { // Also conform to expression when call takes a #/var
     
     
 //    var leftOperand: Expression
@@ -25,7 +25,8 @@ class Move: Statement, Expression {
         return "Move \(String(describing: variableName)) units."
     }
     
-    init(distance: Int){
+    init? (distance: Int){
+        guard distance > 0 else { return nil }
         self.distance = distance
     }
     
@@ -52,8 +53,17 @@ class Move: Statement, Expression {
     }
  */
     func evaluate(values: Context) -> Int? {
-        return 0
+        if let value = distance {
+            return value
+        }
+        if let name = variableName, let value = values.getValue(for: name) {
+            return value
+        }
+        return nil
     }
     
+    func accept(visitor: Visitor) {
+        visitor.visit(self)
+    }
     
 }

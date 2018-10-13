@@ -1,0 +1,52 @@
+//
+//  DistanceVisitor.swift
+//  Assignment3
+//
+//  Created by Mark Rassamni on 10/13/18.
+//  Copyright © 2018 Mark Rassamni. All rights reserved.
+//
+
+import Foundation
+
+class DistanceVisitor: Visitor {
+    
+    private(set) var distance: Int = 0
+    private(set) var isPenDown: Bool = false
+    var turtle: Turtle
+    var context: Context
+    
+    init(turtle: Turtle, context: Context) {
+        self.turtle = turtle
+        self.context = context
+    }
+    
+    // Why do this? Visit program causes it to visit all expressions
+    func visit(_ program: Program) {
+        program.accept(visitor: self)
+    }
+    
+    func visit(_ penUp: PenUp) {
+        isPenDown = false
+    }
+    
+    func visit(_ penDown: PenDown) {
+        isPenDown = true
+    }
+    
+    func visit(_ move: Move) {
+        guard isPenDown, let change = move.evaluate(values: context) else { return }
+        distance += change
+    }
+    
+    func visit(_ assignment: Assignment) {
+        context.setValue(for: assignment.variable.name, to: assignment.variable.value)
+    }
+    
+    func visit(_ turn: Turn) {
+        return
+    }
+    
+    func visit(_ repeat: Repeat) {
+        return
+    }
+}
