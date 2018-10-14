@@ -10,49 +10,31 @@ import Foundation
 
 class CaretakerVisitor: Visitor {
     
-    private(set) var context = Context()
     private(set) var mementos = [Memento]()
-    private(set) var turtle = Turtle()
-    
-    func visit(_ program: Program){
-        for statement in program.statements {
-            statement.accept(visitor: self)
-        }
-    }
-    
-    func visit(_ penUp: PenUp){
-        turtle.penUp()
+
+    override init(turtle: Turtle, context: Context) {
+        super.init(turtle: turtle, context: context)
         saveState()
     }
     
-    func visit(_ penDown: PenDown){
-        turtle.penDown()
+    override func visit(_ penUp: PenUp){
+        super.visit(penUp)
         saveState()
     }
     
-    func visit(_ move: Move){
-        guard turtle.isPenDown, let change = move.evaluate(values: context) else { return }
-        turtle.move(distance: change)
+    override func visit(_ penDown: PenDown){
+        super.visit(penDown)
         saveState()
     }
     
-    func visit(_ turn: Turn){
-        guard let degrees = turn.evaluate(values: context) else { return }
-        turtle.turn(degrees: degrees)
+    override func visit(_ move: Move){
+        super.visit(move)
         saveState()
     }
     
-    func visit(_ repeatNode: Repeat){
-        guard let repeatCount = repeatNode.evaluate(values: context) else { return }
-        for _ in 0..<repeatCount {
-            for statement in repeatNode.statements {
-                statement.accept(visitor: self)
-            }
-        }
-    }
-    
-    func visit(_ assignment: Assignment){
-        context.setValue(for: assignment.variable.name, to: assignment.variable.value)
+    override func visit(_ turn: Turn){
+        super.visit(turn)
+        saveState()
     }
     
     func saveState() {

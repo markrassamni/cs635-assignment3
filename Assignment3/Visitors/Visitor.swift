@@ -8,14 +8,50 @@
 
 import Foundation
 
-// TODO: Refactor to have Visitor as a class that implements several methods, sub vis inherit from, dont have to double implement methods
-protocol Visitor {
-    var context: Context { get }
-    func visit(_ program: Program)
-    func visit(_ penUp: PenUp)
-    func visit(_ penDown: PenDown)
-    func visit(_ move: Move)
-    func visit(_ turn: Turn)
-    func visit(_ repeat: Repeat)
-    func visit(_ assignment: Assignment)
+class Visitor {
+    
+    private(set) var turtle = Turtle()
+    private(set) var context = Context()
+    
+    init(turtle: Turtle, context: Context) {
+        self.turtle = turtle
+        self.context = context
+    }
+    
+    func visit(_ program: Program){
+        for statement in program.statements {
+            statement.accept(visitor: self)
+        }
+    }
+    
+    func visit(_ penUp: PenUp){
+        turtle.penUp()
+    }
+    
+    func visit(_ penDown: PenDown){
+        turtle.penDown()
+    }
+    
+    func visit(_ move: Move){
+        guard turtle.isPenDown, let change = move.evaluate(values: context) else { return }
+        turtle.move(distance: change)
+    }
+    
+    func visit(_ turn: Turn){
+        guard let degrees = turn.evaluate(values: context) else { return }
+        turtle.turn(degrees: degrees)
+    }
+    
+    func visit(_ repeatNode: Repeat){
+        guard let repeatCount = repeatNode.evaluate(values: context) else { return }
+        for _ in 0..<repeatCount {
+            for statement in repeatNode.statements {
+                statement.accept(visitor: self)
+            }
+        }
+    }
+    
+    func visit(_ assignment: Assignment){
+        context.setValue(for: assignment.variable.name, to: assignment.variable.value)
+    }
 }
