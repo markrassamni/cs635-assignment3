@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Repeat: Statement {
+class Repeat: Statement, Expression {
     
     private(set) var count: Int!
     private(set) var variableName: String?
@@ -31,11 +31,11 @@ class Repeat: Statement {
         self.variableName = variableName
     }
     
-    func evaluate(values: Context) -> Int? {
+    func interpret(context: Context) -> Int? {
         let repeatCount: Int
         if let value = count {
             repeatCount = value
-        } else if let name = variableName, let value = values.getValue(for: name) {
+        } else if let name = variableName, let value = context.getValue(for: name) {
             repeatCount = value
         } else {
             return nil

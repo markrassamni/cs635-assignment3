@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Turn: Statement {
+class Turn: Statement, Expression {
     
     private(set) var degrees: Int!
     private(set) var variableName: String?
@@ -28,11 +28,11 @@ class Turn: Statement {
         self.variableName = variableName
     }
     
-    func evaluate(values: Context) -> Int? {
+    func interpret(context: Context) -> Int? {
         if let value = degrees {
             return value
         }
-        if let name = variableName, let value = values.getValue(for: name) {
+        if let name = variableName, let value = context.getValue(for: name) {
             return value
         }
         return nil

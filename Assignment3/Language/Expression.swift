@@ -8,9 +8,6 @@
 
 import Foundation
 
-protocol Expression: CustomStringConvertible {
-    var description: String { get } // Swift toString()
-//    func evaluate(values: [String:Expression]) -> (x: Double, y: Double)
-//    func evaluate(values: [String: Expression]) -> Location
-    func evaluate(values: Context) -> Int?
+protocol Expression {
+    func interpret(context: Context) -> Int?
 }
