@@ -10,6 +10,7 @@ import Foundation
 
 protocol Visitor {
     var context: Context { get }
+    func visit(_ program: Program)
     func visit(_ penUp: PenUp)
     func visit(_ penDown: PenDown)
     func visit(_ move: Move)

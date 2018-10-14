@@ -17,10 +17,8 @@ class Program{
         statements.append(statement)
     }
     
-    func accept(visitor: Visitor){ 
-        for statement in statements {
-            statement.accept(visitor: visitor)
-        }
+    func accept(visitor: Visitor){
+        visitor.visit(self)
     }
     
     // TOOD: Need to finish this or remove? if not also remove turtle class var

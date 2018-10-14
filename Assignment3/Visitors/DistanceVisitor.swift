@@ -14,6 +14,12 @@ class DistanceVisitor: Visitor {
     private(set) var isPenDown: Bool = false
     private(set) var context = Context()
     
+    func visit(_ program: Program){
+        for statement in program.statements {
+            statement.accept(visitor: self)
+        }
+    }
+    
     func visit(_ penUp: PenUp) {
         isPenDown = false
     }
