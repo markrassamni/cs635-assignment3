@@ -29,11 +29,11 @@ class Move: Statement, Expression {
         self.variableName = variableName
     }
 
-    func interpret(context values: Context) -> Int? {
+    func interpret(context: Context) -> Int? {
         if let value = distance {
             return value
         }
-        if let name = variableName, let value = values.getValue(for: name), value > 0 {
+        if let name = variableName, let value = context.getValue(for: name), value > 0 {
             return value
         }
         return nil
