@@ -11,7 +11,8 @@ import Foundation
 class Program{
     
     private(set) var statements = [Statement]()
-    
+    private(set) var turtle = Turtle()
+ 
     func add(statement: Statement){
         statements.append(statement)
     }
@@ -19,6 +20,18 @@ class Program{
     func accept(visitor: Visitor){ 
         for statement in statements {
             statement.accept(visitor: visitor)
+        }
+    }
+    
+    // TOOD: Need to finish this or remove? if not also remove turtle class var
+    func execute(){
+        for statement in statements{
+            switch statement{
+            case is PenUp:
+                turtle.penUp()
+            default:
+                return
+            }
         }
     }
 }
