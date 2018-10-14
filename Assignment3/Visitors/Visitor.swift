@@ -25,25 +25,24 @@ class Visitor {
     }
     
     func visit(_ penUp: PenUp){
-        turtle.penUp()
+        let _ = penUp.interpret(turtle: turtle, context: context)
     }
     
     func visit(_ penDown: PenDown){
-        turtle.penDown()
+        let _ = penDown.interpret(turtle: turtle, context: context)
     }
     
     func visit(_ move: Move){
-        guard turtle.isPenDown, let change = move.interpret(context: context) else { return }
-        turtle.move(distance: change)
+        let _ = move.interpret(turtle: turtle, context: context)
     }
     
     func visit(_ turn: Turn){
-        guard let degrees = turn.interpret(context: context) else { return }
-        turtle.turn(degrees: degrees)
+        let _ = turn.interpret(turtle: turtle, context: context)
     }
     
     func visit(_ repeatNode: Repeat){
-        guard let repeatCount = repeatNode.interpret(context: context) else { return }
+        // TODO: Move repeat into repeat.interpret
+        guard let repeatCount = repeatNode.interpret(turtle: turtle, context: context) else { return }
         for _ in 0..<repeatCount {
             for statement in repeatNode.statements {
                 statement.accept(visitor: self)

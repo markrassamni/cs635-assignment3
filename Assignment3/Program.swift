@@ -31,6 +31,11 @@ class Program{
     }
     
     private func evaluate(statement: Statement){
+        
+        // TODO: Just do this
+//        for statement in statements {
+//            statement.interpret(turtle: turtle, context: context)
+//        }
         switch statement{
         case is PenUp:
             turtle.penUp()
@@ -38,15 +43,14 @@ class Program{
             turtle.penDown()
         case is Move:
             guard let move = statement as? Move else { return }
-            guard let value = move.interpret(context: context) else { return }
-            turtle.move(distance: value)
+            let _ = move.interpret(turtle: turtle, context: context)
         case is Turn:
             guard let turn = statement as? Turn else { return }
-            guard let value = turn.interpret(context: context) else { return }
-            turtle.turn(degrees: value)
+            let _ = turn.interpret(turtle: turtle, context: context)
         case is Repeat:
+            // TODO: Move this for loop inside repeat.interpret
             guard let repeatStatement = statement as? Repeat else { return }
-            guard let count = repeatStatement.interpret(context: context) else { return }
+            guard let count = repeatStatement.interpret(turtle: turtle, context: context) else { return }
             for _ in 0..<count {
                 for statement in repeatStatement.statements {
                     evaluate(statement: statement)

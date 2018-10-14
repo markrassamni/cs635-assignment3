@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Repeat: Statement, Expression {
+class Repeat: Statement {
     
     private(set) var count: Int!
     private(set) var variableName: String?
@@ -31,7 +31,25 @@ class Repeat: Statement, Expression {
         self.variableName = variableName
     }
     
-    func interpret(context: Context) -> Int? {
+    /*
+    func interpret(turtle: Turtle, context: Context) {
+        let repeatCount: Int
+        if let value = count {
+            repeatCount = value
+        } else if let name = variableName, let value = context.getValue(for: name) {
+            repeatCount = value
+        } else {
+            repeatCount = 0
+        }
+        for _ in 0..<repeatCount {
+            for statement in statements {
+                statement.interpret(turtle: turtle, context: context)
+            }
+        }
+    }
+ */
+    
+    func interpret(turtle: Turtle, context: Context) -> Int? {
         let repeatCount: Int
         if let value = count {
             repeatCount = value

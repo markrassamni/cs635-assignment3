@@ -8,18 +8,9 @@
 
 import Foundation
 
+// TODO: Rename to Grammar.  and rename expressions to statement?
 protocol Statement: CustomStringConvertible {
     var description: String { get } // Swift toString()
-//    func interpret(turtle: Turtle, context: Context)
     func accept(visitor: Visitor)
+    func interpret(turtle: Turtle, context: Context) -> Int?
 }
-
-/*
- protocol Expression: CustomStringConvertible {
- var description: String { get } // Swift toString()
- //    func evaluate(values: [String:Expression]) -> (x: Double, y: Double)
- //    func evaluate(values: [String: Expression]) -> Location
- func evaluate(values: Context) -> Int?
- }
- 
- */

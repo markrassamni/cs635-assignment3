@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Erase this file
 protocol Expression {
     func interpret(context: Context) -> Int?
 }

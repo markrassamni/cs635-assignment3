@@ -19,7 +19,7 @@ class Turtle{
     let penDownState = "penDownState"
     
     func move(distance: Int) {
-        if isPenDown {
+        if isPenDown && distance > 0 {
             let radians = Double(currentDirection) * .pi / 180
             let deltaX = cos(radians) * Double(distance)
             let deltaY = sin(radians) * Double(distance)

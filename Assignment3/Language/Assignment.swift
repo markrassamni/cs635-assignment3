@@ -24,6 +24,11 @@ class Assignment: Statement {
         self.init(variable: (name: name, value: value))
     }
     
+    func interpret(turtle: Turtle, context: Context) -> Int? {
+        context.setValue(for: variable.name, to: variable.value)
+        return nil
+    }
+    
     func accept(visitor: Visitor) {
         visitor.visit(self)
     }

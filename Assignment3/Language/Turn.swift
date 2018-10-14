@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Turn: Statement, Expression {
+class Turn: Statement {
     
     private(set) var degrees: Int!
     private(set) var variableName: String?
@@ -28,11 +28,13 @@ class Turn: Statement, Expression {
         self.variableName = variableName
     }
     
-    func interpret(context: Context) -> Int? {
+    func interpret(turtle: Turtle, context: Context) -> Int? {
         if let value = degrees {
+            turtle.turn(degrees: value)
             return value
         }
         if let name = variableName, let value = context.getValue(for: name) {
+            turtle.turn(degrees: value)
             return value
         }
         return nil

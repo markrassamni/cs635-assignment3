@@ -24,6 +24,7 @@
 		F97CB8E32172B11200D1471B /* Memento.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8E22172B11200D1471B /* Memento.swift */; };
 		F97CB8E52172C6B100D1471B /* test2.txt in Resources */ = {isa = PBXBuildFile; fileRef = F97CB8E42172C6B100D1471B /* test2.txt */; };
 		F97CB8E72172CCBE00D1471B /* test3.txt in Resources */ = {isa = PBXBuildFile; fileRef = F97CB8E62172CCBE00D1471B /* test3.txt */; };
+		F97CB8EB217357FC00D1471B /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8EA217357FC00D1471B /* Variable.swift */; };
 		F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E202162F98F008C016F /* AppDelegate.swift */; };
 		F9AB2E252162F990008C016F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E242162F990008C016F /* Assets.xcassets */; };
 		F9AB2E282162F990008C016F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E262162F990008C016F /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		F97CB8E22172B11200D1471B /* Memento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memento.swift; sourceTree = "<group>"; };
 		F97CB8E42172C6B100D1471B /* test2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test2.txt; sourceTree = "<group>"; };
 		F97CB8E62172CCBE00D1471B /* test3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test3.txt; sourceTree = "<group>"; };
+		F97CB8EA217357FC00D1471B /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		F9AB2E1D2162F98F008C016F /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E202162F98F008C016F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AB2E242162F990008C016F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				F92226A52162FE4500318BB7 /* Assignment.swift */,
 				F9D653B72171574000B028E6 /* Statement.swift */,
 				F92226AF216354B000318BB7 /* Expression.swift */,
+				F97CB8EA217357FC00D1471B /* Variable.swift */,
 			);
 			path = Language;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				F922269C2162FD3600318BB7 /* PenUp.swift in Sources */,
 				F922269E2162FD7C00318BB7 /* PenDown.swift in Sources */,
 				F9D653B82171574000B028E6 /* Statement.swift in Sources */,
+				F97CB8EB217357FC00D1471B /* Variable.swift in Sources */,
 				F92226A02162FDA800318BB7 /* Move.swift in Sources */,
 				F9AE167F2165A29E00778BD9 /* Point.swift in Sources */,
 				F92226AC2163042800318BB7 /* Context.swift in Sources */,

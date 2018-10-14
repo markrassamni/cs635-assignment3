@@ -17,4 +17,9 @@ class PenUp: Statement {
     func accept(visitor: Visitor) {
         visitor.visit(self)
     }
+    
+    func interpret(turtle: Turtle, context: Context) -> Int? {
+        turtle.penUp()
+        return nil
+    }
 }

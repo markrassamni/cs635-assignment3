@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Move: Statement, Expression {
+class Move: Statement {
     
     private(set) var distance: Int!
     private(set) var variableName: String?
@@ -28,12 +28,22 @@ class Move: Statement, Expression {
     init(variableName: String) {
         self.variableName = variableName
     }
-
-    func interpret(context: Context) -> Int? {
-        if let value = distance {
+    
+    // TODO: Figure out how to do this and get a value for visitor
+    /*
+    func interpret(turtle: Turtle, context: Context) {
+        // TODO: around 17:30 video he says how to handle this
+        let _: Int? = interpret(turtle: turtle, context: context)
+    }
+ */
+    
+    func interpret(turtle: Turtle, context: Context) -> Int? {
+        guard turtle.isPenDown else { return 0 } // TODO: Return nil or 0?
+        if let value = distance, value > 0 {
+            turtle.move(distance: value)
             return value
-        }
-        if let name = variableName, let value = context.getValue(for: name), value > 0 {
+        } else if let name = variableName, let value = context.getValue(for: name), value > 0 {
+            turtle.move(distance: value)
             return value
         }
         return nil
