@@ -28,7 +28,7 @@ class Assignment3Tests: XCTestCase {
         // TODO: Make statements equatable
         let ast = fileParser.parse(file: "test1.txt")
         XCTAssertNotNil(ast)
-        let expectedStatements: [Statement] = [Repeat(statements: [Move(distance: 10), Move(distance: 15), Move(distance: 20)], repeatCount: 2), Move(distance: 10), Turn(degrees: 10), Move(distance: 10)]
+        let expectedStatements: [Statement] = [Repeat(statements: [Move(distance: 10)!, Move(distance: 15)!, Move(distance: 20)!], repeatCount: 2), Move(distance: 10)!, Turn(degrees: 10), Move(distance: 10)!]
         let expectedAST = Program()
         for statement in expectedStatements {
             expectedAST.add(statement: statement)
@@ -83,6 +83,15 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(turtle.location().x, 22.99, accuracy: 0.001)
         XCTAssertEqual(turtle.location().y, 27.5, accuracy: 0.001)
         XCTAssertEqual(turtle.currentDirection, 30)
+    }
+    
+    func testDistanceVisitor(){
+        // TODO: Change parse name to something related to creating a program
+        let ast = fileParser.parse(file: "test2.txt")
+        XCTAssertNotNil(ast)
+        let distanceVisitor = DistanceVisitor()
+        ast!.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 20)
     }
 
 }
