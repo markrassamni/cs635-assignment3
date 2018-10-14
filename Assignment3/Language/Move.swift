@@ -8,9 +8,8 @@
 
 import Foundation
 
-class Move: Statement, Expression { // TODO: Also conform to expression when call takes a #/vars?
+class Move: Statement, Expression {
     
-    // TODO: Should change to lets?
     private(set) var distance: Int!
     private(set) var variableName: String?
  
@@ -30,7 +29,6 @@ class Move: Statement, Expression { // TODO: Also conform to expression when cal
         self.variableName = variableName
     }
 
-    // TODO: Change evaluate methods in all statements to "interpret"
     func interpret(context values: Context) -> Int? {
         if let value = distance {
             return value
