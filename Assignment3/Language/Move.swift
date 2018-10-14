@@ -44,5 +44,4 @@ class Move: Statement { // TODO: Also conform to expression when call takes a #/
     func accept(visitor: Visitor) {
         visitor.visit(self)
     }
-    
 }
