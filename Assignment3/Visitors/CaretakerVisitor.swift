@@ -24,36 +24,31 @@ class CaretakerVisitor: Visitor {
     }
     
     func visit(_ penUp: PenUp){
-        
         turtle.penUp()
-        let memento = createMemento()
-        mementos.append(memento)
-        
-        /*
-        guard let direction = mementos.last?.direction else { return }
-        guard let location = mementos.last?.location else { return }
-        let memento = Memento(direction: direction, location: location, isPenDown: false)
-        mementos.append(memento)
-         */
+        mementos.append(createMemento())
     }
     
     func visit(_ penDown: PenDown){
-        guard let direction = mementos.last?.direction else { return }
-        guard let location = mementos.last?.location else { return }
-        let memento = Memento(direction: direction, location: location, isPenDown: true)
-        mementos.append(memento)
+        turtle.penDown()
+        mementos.append(createMemento())
     }
     
     func visit(_ move: Move){
-        
+        guard turtle.isPenDown, let change = move.evaluate(values: context) else { return }
+        turtle.move(distance: change)
+        mementos.append(createMemento())
     }
     
     func visit(_ turn: Turn){
-        
+        guard let degrees = turn.evaluate(values: context) else { return }
+        turtle.turn(degrees: degrees)
+        mementos.append(createMemento())
     }
     
-    func visit(_ repeat: Repeat){
-        
+    func visit(_ repeatBlock: Repeat){
+//        for statement in repeatBlock.statements {
+//            
+//        }
     }
     
     func visit(_ assignment: Assignment){

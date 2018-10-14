@@ -41,8 +41,8 @@ class Turn: Statement {
     }
  */
     
-    func evaluate(values: Context) {
-        
+    func evaluate(values: Context) -> Int? {
+        return 0
     }
     
     func accept(visitor: Visitor) {
