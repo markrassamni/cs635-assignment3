@@ -27,6 +27,16 @@ class Memento {
 
 extension Memento: Equatable{
     static func == (lhs: Memento, rhs: Memento) -> Bool {
-        return NSDictionary(dictionary: lhs.savedState).isEqual(to: rhs.savedState)
+        let leftArray = Array(lhs.savedState.values)
+        let rightArray = Array(rhs.savedState.values)
+        guard leftArray.count == rightArray.count else { return false }
+        let unEqualLeft = leftArray.enumerated().filter { $0.element as AnyObject !== rightArray[$0.offset] as AnyObject}.map{ $0.element }
+        let unEqualRight = rightArray.enumerated().filter { $0.element as AnyObject !== leftArray[$0.offset] as AnyObject}.map { $0.element }
+        guard unEqualLeft.count == unEqualRight.count else { return false }
+        let leftPoints = unEqualLeft.filter { $0 is Point } as! [Point]
+        let rightPoints = unEqualRight.filter { $0 is Point } as! [Point]
+        guard leftPoints.count == rightPoints.count && leftPoints.count == unEqualLeft.count else { return false }
+        let unEqualPoints = leftPoints.enumerated().filter { abs($0.element.x - rightPoints[$0.offset].x) > 0.0001 && abs($0.element.y - rightPoints[$0.offset].y) > 0.0001 }
+        return unEqualPoints.count > 0 ? false : true
     }
 }
