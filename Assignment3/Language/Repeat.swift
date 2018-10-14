@@ -10,9 +10,9 @@ import Foundation
 
 class Repeat: Statement {
     
-    let statements: [Statement]
     private(set) var count: Int!
     private(set) var variableName: String?
+    let statements: [Statement]
     
     var description: String {
         if let repeatcount = count {
@@ -45,22 +45,21 @@ class Repeat: Statement {
             return repeatCount
         }
         return nil
+        
+        // TODO: Test replacing above code with this:
+        /*
+        let repeatCount: Int
+        if let value = count {
+            repeatCount = value
+        }
+        if let name = variableName, let value = values.getValue(for: name) {
+            repeatCount = value
+        }
+        return repeatCount < 1 ? 0 : repeatCount
+        */
     }
     
     func accept(visitor: Visitor) {
         visitor.visit(self)
     }
-    
-    /*
-     repeat k
-     statement1
-     statement2
-     ...
-     statementJ
-     end
- 
- */
-    
-    // k is an integer. The statements inside the repeat block are any legal statement in the language. the repeat statement has the obvious semantics.
-    
 }

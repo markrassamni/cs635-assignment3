@@ -8,10 +8,7 @@
 
 import Foundation
 
-class Assignment: Statement, Expression {
-    
-    // #K = Y
-//    Y is an integer. The variable $K can be used in move, turn and repeat commands.
+class Assignment: Statement {
     
     private(set) var variable: (name: String, value: Int)
     
@@ -27,17 +24,7 @@ class Assignment: Statement, Expression {
         self.init(variable: (name: name, value: value))
     }
     
-    func evaluate(values: Context) -> Int? {
-        return values.getValue(for: variable.name)
-    }
-    
-    func evaluate(context: Context){
-        context.setValue(for: variable.name, to: variable.value)
-    }
-    
     func accept(visitor: Visitor) {
         visitor.visit(self)
     }
-    
-    
 }
