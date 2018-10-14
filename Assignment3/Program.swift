@@ -24,6 +24,7 @@ class Program{
     }
     
     // TOOD: Need to finish this or remove? if not also remove turtle class var
+    // Need to execute without visitor. If we have visitor and we call execute then visitor does its stuff. Above call to accept visitor should not also execute
     func execute(){
         for statement in statements{
             switch statement{

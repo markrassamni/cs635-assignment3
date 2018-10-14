@@ -19,6 +19,11 @@ class Memento {
         self.location = location
         self.isPenDown = isPenDown
     }
+    
+    // TODO: Be able to call with turtle?
+    convenience init(turtle: Turtle) {
+        self.init(direction: turtle.currentDirection, location: turtle.currentLocation, isPenDown: turtle.isPenDown)
+    }
 }
 
 extension Memento: Equatable {

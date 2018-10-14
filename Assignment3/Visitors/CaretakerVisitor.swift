@@ -19,10 +19,6 @@ class CaretakerVisitor: Visitor {
         mementos = [Memento(direction: startDirection, location: startLocation, isPenDown: doesPenStartDown)]
     }
     
-    func visit(_ program: Program) {
-        program.accept(visitor: self)
-    }
-    
     func visit(_ penUp: PenUp){
         turtle.penUp()
         mementos.append(createMemento())
