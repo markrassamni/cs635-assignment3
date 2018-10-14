@@ -16,9 +16,4 @@ class DistanceVisitor: Visitor {
         guard turtle.isPenDown, let change = move.interpret(context: context) else { return }
         distance += change
     }
-    
-    // TODO: Let it turn? Remove override?
-    override func visit(_ turn: Turn) {
-        return
-    }
 }
