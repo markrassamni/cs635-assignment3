@@ -92,5 +92,27 @@ class Assignment3Tests: XCTestCase {
         ast!.accept(visitor: distanceVisitor)
         XCTAssertEqual(distanceVisitor.distance, 20)
     }
+    
+    func testFileWithVariable(){
+        let ast = fileParser.buildProgram(fromFile: "test3.txt")
+        XCTAssertNotNil(ast)
+        let visitor = CaretakerVisitor(startDirection: 0, startLocation: Point(0,0), doesPenStartDown: false)
+        ast!.accept(visitor: visitor)
+        let mementos = visitor.mementos
+        XCTAssertEqual(mementos.count, 9)
+        XCTAssertEqual(mementos[0], Memento(direction: 0, location: Point(0,0), isPenDown: false))
+        XCTAssertEqual(mementos[1], Memento(direction: 0, location: Point(0,0), isPenDown: true))
+        XCTAssertEqual(mementos[2], Memento(direction: 0, location: Point(15,0), isPenDown: true))
+        XCTAssertEqual(mementos[3], Memento(direction: 90, location: Point(15,0), isPenDown: true))
+        XCTAssertEqual(mementos[4], Memento(direction: 90, location: Point(15,15), isPenDown: true))
+        XCTAssertEqual(mementos[5], Memento(direction: 180, location: Point(15,15), isPenDown: true))
+        XCTAssertEqual(mementos[6], Memento(direction: 180, location: Point(0,15), isPenDown: true))
+        XCTAssertEqual(mementos[7], Memento(direction: 270, location: Point(0,15), isPenDown: true))
+        XCTAssertEqual(mementos[8], Memento(direction: 270, location: Point(0,0), isPenDown: true))
+    }
+    
+    func testCaretaker(){
+        
+    }
 
 }
