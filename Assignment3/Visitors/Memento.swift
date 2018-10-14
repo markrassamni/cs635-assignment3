@@ -20,3 +20,9 @@ class Memento {
         self.isPenDown = isPenDown
     }
 }
+
+extension Memento: Equatable {
+    public static func == (lhs: Memento, rhs: Memento) -> Bool {
+        return lhs.direction == rhs.direction && lhs.isPenDown == rhs.isPenDown && lhs.location == rhs.location
+    }
+}
