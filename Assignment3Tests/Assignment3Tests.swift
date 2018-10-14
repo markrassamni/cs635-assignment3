@@ -81,6 +81,13 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(distanceVisitor.distance, 20)
     }
     
+    func testDistanceVisitorRepeat(){
+        let ast = fileParser.buildProgram(fromFile: "test4.txt")
+        XCTAssertNotNil(ast)
+        ast!.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 20)
+    }
+    
     func testCaretakerVisitor(){
         let ast = fileParser.buildProgram(fromFile: "test1.txt")
         XCTAssertNotNil(ast)
