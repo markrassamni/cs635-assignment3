@@ -11,20 +11,37 @@ import Foundation
 class CaretakerVisitor: Visitor {
     
     private(set) var context = Context()
-    private(set) var mementos = [Memento]()
+    private(set) var mementos: [Memento]
+    private(set) var turtle = Turtle()
+    
+    // How to handle this? Should pass starting values to visitor?
+    init(startDirection: Int, startLocation: Point, doesPenStartDown: Bool) {
+        mementos = [Memento(direction: startDirection, location: startLocation, isPenDown: doesPenStartDown)]
+    }
     
     func visit(_ program: Program) {
         program.accept(visitor: self)
     }
     
     func visit(_ penUp: PenUp){
-//        let memento = Memento(direction: turtle.direction(), location: turtle.location(), isPenDown: false)
-//        mementos.append(memento)
+        
+        turtle.penUp()
+        let memento = createMemento()
+        mementos.append(memento)
+        
+        /*
+        guard let direction = mementos.last?.direction else { return }
+        guard let location = mementos.last?.location else { return }
+        let memento = Memento(direction: direction, location: location, isPenDown: false)
+        mementos.append(memento)
+         */
     }
     
     func visit(_ penDown: PenDown){
-//        let memento = Memento(direction: turtle.direction(), location: turtle.location(), isPenDown: true)
-//        mementos.append(memento)
+        guard let direction = mementos.last?.direction else { return }
+        guard let location = mementos.last?.location else { return }
+        let memento = Memento(direction: direction, location: location, isPenDown: true)
+        mementos.append(memento)
     }
     
     func visit(_ move: Move){
@@ -41,5 +58,12 @@ class CaretakerVisitor: Visitor {
     
     func visit(_ assignment: Assignment){
         
+    }
+    
+    func createMemento() -> Memento{
+        let direction = turtle.currentDirection
+        let location = turtle.currentLocation
+        let isPenDown = turtle.isPenDown
+        return Memento(direction: direction, location: location, isPenDown: isPenDown)
     }
 }
