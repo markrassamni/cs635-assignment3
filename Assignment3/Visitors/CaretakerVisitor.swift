@@ -47,12 +47,12 @@ class CaretakerVisitor: Visitor {
     
     func visit(_ repeatBlock: Repeat){
 //        for statement in repeatBlock.statements {
-//            
+//
 //        }
     }
     
     func visit(_ assignment: Assignment){
-        
+        context.setValue(for: assignment.variable.name, to: assignment.variable.value)
     }
     
     func createMemento() -> Memento{
