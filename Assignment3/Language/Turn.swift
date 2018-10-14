@@ -42,7 +42,13 @@ class Turn: Statement {
  */
     
     func evaluate(values: Context) -> Int? {
-        return 0
+        if let value = degrees {
+            return value
+        }
+        if let name = variableName, let value = values.getValue(for: name) {
+            return value
+        }
+        return nil
     }
     
     func accept(visitor: Visitor) {

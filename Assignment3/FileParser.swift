@@ -86,7 +86,7 @@ class FileParser {
                 }
             case assignment:
                 currentLine += 1
-                guard let name = lineComponents.first, let value = Int(lineComponents[1]) else { return nil }
+                guard let name = lineComponents.first, let value = Int(lineComponents[2]) else { return nil }
                 statements.append(Assignment(name: name, value: value))
             default:
                 return nil
