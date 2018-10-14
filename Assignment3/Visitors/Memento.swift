@@ -23,6 +23,7 @@ class Memento {
 
 extension Memento: Equatable {
     public static func == (lhs: Memento, rhs: Memento) -> Bool {
-        return lhs.direction == rhs.direction && lhs.isPenDown == rhs.isPenDown && lhs.location == rhs.location
+        return lhs.direction == rhs.direction && lhs.isPenDown == rhs.isPenDown &&
+            abs(lhs.location.x - rhs.location.x) < 0.0001 && abs(lhs.location.y - rhs.location.y) < 0.0001
     }
 }
