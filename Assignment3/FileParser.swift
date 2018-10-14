@@ -74,7 +74,7 @@ class FileParser {
             case repeatCommand.lowercased():
                 guard lineComponents.count == 2 else { return nil }
                 let repeatCount = lineComponents[1]
-                let optionalEndIndex = lines[currentLine..<lines.count].enumerated().filter {$0.element.lowercased() == endRepeat.lowercased()}.map{$0.offset}.first
+                let optionalEndIndex = lines[currentLine..<lines.count].enumerated().filter {$0.element.lowercased() == endRepeat.lowercased()}.map{$0.offset + 1}.first
                 guard let endIndex = optionalEndIndex else { return nil }
                 let repeatedLines = lines.enumerated().filter{$0.offset > currentLine && $0.offset < endIndex }.map{$0.element}
                 currentLine = endIndex + 1
