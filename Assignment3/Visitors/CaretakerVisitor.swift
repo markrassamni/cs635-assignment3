@@ -45,10 +45,13 @@ class CaretakerVisitor: Visitor {
         mementos.append(createMemento())
     }
     
-    func visit(_ repeatBlock: Repeat){
-//        for statement in repeatBlock.statements {
-//
-//        }
+    func visit(_ repeatNode: Repeat){
+        guard let repeatCount = repeatNode.evaluate(values: context) else { return }
+        for _ in 0..<repeatCount {
+            for statement in repeatNode.statements {
+                statement.accept(visitor: self)
+            }
+        }
     }
     
     func visit(_ assignment: Assignment){

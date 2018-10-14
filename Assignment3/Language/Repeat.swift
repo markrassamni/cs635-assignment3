@@ -31,8 +31,20 @@ class Repeat: Statement {
         self.variableName = variableName
     }
     
-    func evaluate(values: Context) {
-        // check if count >0, otherwise do nothing
+    func evaluate(values: Context) -> Int? {
+        if let repeatCount = count {
+            if repeatCount < 1 {
+                return 0
+            }
+            return repeatCount
+        }
+        if let name = variableName, let repeatCount = values.getValue(for: name) {
+            if repeatCount < 1 {
+                return 0
+            }
+            return repeatCount
+        }
+        return nil
     }
     
     func accept(visitor: Visitor) {

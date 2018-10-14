@@ -36,11 +36,16 @@ class DistanceVisitor: Visitor {
         context.setValue(for: assignment.variable.name, to: assignment.variable.value)
     }
     
-    func visit(_ turn: Turn) {
-        return
+    func visit(_ repeatNode: Repeat) {
+        guard let repeatCount = repeatNode.evaluate(values: context) else { return }
+        for _ in 0..<repeatCount {
+            for statement in repeatNode.statements {
+                statement.accept(visitor: self)
+            }
+        }
     }
     
-    func visit(_ repeat: Repeat) {
+    func visit(_ turn: Turn) {
         return
     }
 }
