@@ -26,7 +26,7 @@ class Assignment3Tests: XCTestCase {
     
     func testParsing(){
         // TODO: Make statements equatable
-        let ast = fileParser.parse(file: "test1.txt")
+        let ast = fileParser.buildProgram(fromFile: "test1.txt")
         XCTAssertNotNil(ast)
         let expectedStatements: [Statement] = [Repeat(statements: [Move(distance: 10)!, Move(distance: 15)!, Move(distance: 20)!], repeatCount: 2), Move(distance: 10)!, Turn(degrees: 10), Move(distance: 10)!]
         let expectedAST = Program()
@@ -86,8 +86,7 @@ class Assignment3Tests: XCTestCase {
     }
     
     func testDistanceVisitor(){
-        // TODO: Change parse name to something related to creating a program
-        let ast = fileParser.parse(file: "test2.txt")
+        let ast = fileParser.buildProgram(fromFile: "test2.txt")
         XCTAssertNotNil(ast)
         let distanceVisitor = DistanceVisitor()
         ast!.accept(visitor: distanceVisitor)

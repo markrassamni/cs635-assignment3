@@ -19,7 +19,7 @@ class FileParser {
     private let endRepeat = "end"
     private let assignment = "#"
     
-    func parse(file: String) -> Program? {
+    func buildProgram(fromFile file: String) -> Program? {
         guard let filePath = Bundle.main.path(forResource: file, ofType: nil) else { return nil }
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
