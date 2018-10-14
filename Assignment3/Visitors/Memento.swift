@@ -10,25 +10,23 @@ import Foundation
 
 class Memento {
     
-    private(set) var direction: Int
-    private(set) var location: Point
-    private(set) var isPenDown: Bool
-    
-    init(direction: Int, location: Point, isPenDown: Bool) {
-        self.direction = direction
-        self.location = location
-        self.isPenDown = isPenDown
+    private(set) var savedState = Dictionary<String, Any>()
+
+    func setState(name: String, value: Any){
+        savedState[name] = value
     }
     
-    // TODO: Be able to call with turtle?
-    convenience init(turtle: Turtle) {
-        self.init(direction: turtle.currentDirection, location: turtle.currentLocation, isPenDown: turtle.isPenDown)
+    func getState(name: String) -> Any? {
+        return savedState[name]
+    }
+    
+    func getState(name: String, defaultValue: Any) -> Any {
+        return savedState[name] ?? defaultValue
     }
 }
 
-extension Memento: Equatable {
-    public static func == (lhs: Memento, rhs: Memento) -> Bool {
-        return lhs.direction == rhs.direction && lhs.isPenDown == rhs.isPenDown &&
-            abs(lhs.location.x - rhs.location.x) < 0.0001 && abs(lhs.location.y - rhs.location.y) < 0.0001
+extension Memento: Equatable{
+    static func == (lhs: Memento, rhs: Memento) -> Bool {
+        return NSDictionary(dictionary: lhs.savedState).isEqual(to: rhs.savedState)
     }
 }

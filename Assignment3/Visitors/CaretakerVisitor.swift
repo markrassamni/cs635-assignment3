@@ -11,13 +11,8 @@ import Foundation
 class CaretakerVisitor: Visitor {
     
     private(set) var context = Context()
-    private(set) var mementos: [Memento]
+    private(set) var mementos = [Memento]()
     private(set) var turtle = Turtle()
-    
-    // How to handle this? Should pass starting values to visitor?
-    init(startDirection: Int, startLocation: Point, doesPenStartDown: Bool) {
-        mementos = [Memento(direction: startDirection, location: startLocation, isPenDown: doesPenStartDown)]
-    }
     
     func visit(_ program: Program){
         for statement in program.statements {
@@ -27,24 +22,24 @@ class CaretakerVisitor: Visitor {
     
     func visit(_ penUp: PenUp){
         turtle.penUp()
-        mementos.append(createMemento())
+        saveState()
     }
     
     func visit(_ penDown: PenDown){
         turtle.penDown()
-        mementos.append(createMemento())
+        saveState()
     }
     
     func visit(_ move: Move){
         guard turtle.isPenDown, let change = move.evaluate(values: context) else { return }
         turtle.move(distance: change)
-        mementos.append(createMemento())
+        saveState()
     }
     
     func visit(_ turn: Turn){
         guard let degrees = turn.evaluate(values: context) else { return }
         turtle.turn(degrees: degrees)
-        mementos.append(createMemento())
+        saveState()
     }
     
     func visit(_ repeatNode: Repeat){
@@ -60,10 +55,11 @@ class CaretakerVisitor: Visitor {
         context.setValue(for: assignment.variable.name, to: assignment.variable.value)
     }
     
-    func createMemento() -> Memento{
-        let direction = turtle.currentDirection
-        let location = turtle.currentLocation
-        let isPenDown = turtle.isPenDown
-        return Memento(direction: direction, location: location, isPenDown: isPenDown)
+    func saveState() {
+        mementos.append(turtle.createMemento())
+    }
+    
+    func restoreState(from memento: Memento){
+        turtle.restoreState(from: memento)
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Refactor to have Visitor as a class that implements several methods, sub vis inherit from, dont have to double implement methods
 protocol Visitor {
     var context: Context { get }
     func visit(_ program: Program)

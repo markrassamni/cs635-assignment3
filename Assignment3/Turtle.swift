@@ -14,6 +14,10 @@ class Turtle{
     private(set) var currentLocation = Point(x: 0.0, y: 0.0)
     private(set) var isPenDown = false
     
+    let directionState = "direction"
+    let locationState = "location"
+    let penDownState = "penDownState"
+    
     func move(distance: Int) {
         if isPenDown {
             let radians = Double(currentDirection) * .pi / 180
@@ -45,5 +49,25 @@ class Turtle{
     
     func location() -> Point {
         return currentLocation
+    }
+    
+    func restoreState(from memento: Memento){
+        if let location = memento.getState(name: locationState) as? Point{
+            currentLocation = location
+        }
+        if let direction = memento.getState(name: directionState) as? Int {
+            currentDirection = direction
+        }
+        if let penDown = memento.getState(name: penDownState) as? Bool {
+            isPenDown = penDown
+        }
+    }
+    
+    func createMemento() -> Memento {
+        let currentState = Memento()
+        currentState.setState(name: locationState, value: currentLocation)
+        currentState.setState(name: directionState, value: currentDirection)
+        currentState.setState(name: penDownState, value: isPenDown)
+        return currentState
     }
 }
