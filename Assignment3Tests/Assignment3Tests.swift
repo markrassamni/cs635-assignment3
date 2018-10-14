@@ -28,7 +28,7 @@ class Assignment3Tests: XCTestCase {
         // TODO: Make statements equatable
         let ast = fileParser.buildProgram(fromFile: "test1.txt")
         XCTAssertNotNil(ast)
-        let expectedStatements: [Statement] = [Repeat(statements: [Move(distance: 10)!, Move(distance: 15)!, Move(distance: 20)!], repeatCount: 2), Move(distance: 10)!, Turn(degrees: 10), Move(distance: 10)!]
+        let expectedStatements: [Statement] = [PenDown(), Repeat(statements: [Move(distance: 10)!, Move(distance: 15)!, Move(distance: 20)!], repeatCount: 2), Move(distance: 10)!, Turn(degrees: 10), Move(distance: 10)!]
         let expectedAST = Program()
         for statement in expectedStatements {
             expectedAST.add(statement: statement)
@@ -93,7 +93,27 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(distanceVisitor.distance, 20)
     }
     
-    func testFileWithVariable(){
+    func testCaretakerVisitor(){
+        let ast = fileParser.buildProgram(fromFile: "test1.txt")
+        XCTAssertNotNil(ast)
+        let visitor = CaretakerVisitor(startDirection: 0, startLocation: Point(0,0), doesPenStartDown: false)
+        ast!.accept(visitor: visitor)
+        let mementos = visitor.mementos
+        XCTAssertEqual(mementos.count, 11)
+        XCTAssertEqual(mementos[0], Memento(direction: 0, location: Point(0,0), isPenDown: false))
+        XCTAssertEqual(mementos[1], Memento(direction: 0, location: Point(0,0), isPenDown: true))
+        XCTAssertEqual(mementos[2], Memento(direction: 0, location: Point(10,0), isPenDown: true))
+        XCTAssertEqual(mementos[3], Memento(direction: 0, location: Point(25,0), isPenDown: true))
+        XCTAssertEqual(mementos[4], Memento(direction: 0, location: Point(45,0), isPenDown: true))
+        XCTAssertEqual(mementos[5], Memento(direction: 0, location: Point(55,0), isPenDown: true))
+        XCTAssertEqual(mementos[6], Memento(direction: 0, location: Point(70,0), isPenDown: true))
+        XCTAssertEqual(mementos[7], Memento(direction: 0, location: Point(90,0), isPenDown: true))
+        XCTAssertEqual(mementos[8], Memento(direction: 0, location: Point(100,0), isPenDown: true))
+        XCTAssertEqual(mementos[9], Memento(direction: 10, location: Point(100,0), isPenDown: true))
+        XCTAssertEqual(mementos[10], Memento(direction: 10, location: Point(109.84808,  1.73648), isPenDown: true))
+    }
+    
+    func testCaretakerVisitorWithVariable(){
         let ast = fileParser.buildProgram(fromFile: "test3.txt")
         XCTAssertNotNil(ast)
         let visitor = CaretakerVisitor(startDirection: 0, startLocation: Point(0,0), doesPenStartDown: false)
@@ -110,9 +130,4 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(mementos[7], Memento(direction: 270, location: Point(0,15), isPenDown: true))
         XCTAssertEqual(mementos[8], Memento(direction: 270, location: Point(0,0), isPenDown: true))
     }
-    
-    func testCaretaker(){
-        
-    }
-
 }

@@ -1,3 +1,4 @@
+pendown
 Repeat 2
     move 10
     mOve 15
