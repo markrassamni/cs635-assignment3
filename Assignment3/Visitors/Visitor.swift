@@ -19,3 +19,20 @@ protocol Visitor {
     func visit(_ repeatNode: Repeat)
     func visit(_ assignment: Assignment)
 }
+
+extension Visitor {
+    func visit(_ program: Program){
+        for statement in program.statements {
+            statement.accept(visitor: self)
+        }
+    }
+
+    func visit(_ repeatNode: Repeat){
+        guard let repeatCount = repeatNode.value.evaluate(context: context) else { return }
+        for _ in 0..<repeatCount {
+            for statement in repeatNode.statements {
+                statement.accept(visitor: self)
+            }
+        }
+    }
+}

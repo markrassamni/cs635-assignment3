@@ -20,12 +20,6 @@ class DistanceVisitor: Visitor {
         distance = 0
     }
     
-    func visit(_ program: Program){
-        for statement in program.statements {
-            statement.accept(visitor: self)
-        }
-    }
-    
     func visit(_ penUp: PenUp){
         turtle.penUp()
     }
@@ -41,15 +35,6 @@ class DistanceVisitor: Visitor {
     
     func visit(_ turn: Turn){
         return
-    }
-    
-    func visit(_ repeatNode: Repeat){
-        guard let repeatCount = repeatNode.value.evaluate(context: context) else { return }
-        for _ in 0..<repeatCount {
-            for statement in repeatNode.statements {
-                statement.accept(visitor: self)
-            }
-        }
     }
     
     func visit(_ assignment: Assignment){
