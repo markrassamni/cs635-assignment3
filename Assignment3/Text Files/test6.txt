@@ -1,0 +1,17 @@
+#side = 10
+penDown
+repeat -4
+    move #side
+    penup
+    turn 90
+    pendown
+end
+penup
+repeat 0
+    pendown
+    move 10
+    penup
+    turn 10
+end
+pendown
+move 5

@@ -31,6 +31,11 @@ class Assignment3Tests: XCTestCase {
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        fileParser = nil
+        turtle = nil
+        context = nil
+        caretakerVisitor = nil
+        distanceVisitor = nil
     }
     
     func testTurtleSquare(){
@@ -114,6 +119,12 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
         XCTAssertEqual(ast!.turtle.direction(), 0)
         XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast?.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 5)
+    }
+    
+    func testNestedRepeat(){
+        // TODO: Implement, also do with visitor?
     }
     
     func testReassignVariable(){
