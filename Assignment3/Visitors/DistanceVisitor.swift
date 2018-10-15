@@ -10,9 +10,9 @@ import Foundation
 
 class DistanceVisitor: Visitor {
     
-    private(set) var turtle: Turtle
-    private(set) var context: Context
     private(set) var distance: Int
+    let turtle: Turtle
+    let context: Context
     
     init(turtle: Turtle, context: Context) {
         self.turtle = turtle

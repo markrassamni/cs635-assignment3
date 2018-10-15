@@ -10,7 +10,7 @@ import Foundation
 
 class Move: Statement {
 
-    private(set) var value: Value
+    let value: Value
     
     var description: String {
         return "Move \(value)."

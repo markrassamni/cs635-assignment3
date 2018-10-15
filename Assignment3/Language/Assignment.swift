@@ -10,8 +10,8 @@ import Foundation
 
 class Assignment: Statement {
     
-    private(set) var variable: Variable
-    private(set) var value: Int
+    let variable: Variable
+    let value: Int
  
     var description: String {
         return "Assign \(variable.name) to \(value)."

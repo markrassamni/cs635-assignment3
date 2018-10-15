@@ -10,7 +10,7 @@ import Foundation
 
 class Variable: Value {
     
-    private(set) var name: String
+    let name: String
     
     var description: String{
         return "\(name)"

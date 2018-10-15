@@ -10,9 +10,7 @@ import Foundation
 
 class PenDown: Statement {
     
-    var description: String {
-        return "Pen placed down."
-    }
+    let description = "Pen placed down."
     
     func accept(visitor: Visitor) {
         visitor.visit(self)

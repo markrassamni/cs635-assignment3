@@ -11,8 +11,8 @@ import Foundation
 class Program{
     
     private(set) var statements: [Statement]
-    private(set) var turtle: Turtle
-    private(set) var context: Context
+    let turtle: Turtle
+    let context: Context
     
     init() {
         self.statements = [Statement]()
