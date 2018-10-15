@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: Should this be a statement and accept visitor?
 class Variable: Value {
     
     var name: String
@@ -21,12 +20,7 @@ class Variable: Value {
         self.name = name
     }
     
-    func accept(visitor: Visitor) {
-        visitor.visit(self)
-    }
-    
-    func interpret(turtle: Turtle, context: Context) -> Int? {
+    func evaluate(context: Context) -> Int? {
         return context.getValue(for: name)
-//        return self
     }
 }

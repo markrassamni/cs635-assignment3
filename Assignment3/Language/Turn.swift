@@ -10,15 +10,9 @@ import Foundation
 
 class Turn: Statement {
     
-//    private(set) var degrees: Int!
-//    private(set) var variableName: String?
     var value: Value
     
     var description: String {
-//        if let turnDegrees = degrees {
-//            return "Turn \(turnDegrees) degrees."
-//        }
-//        return "Turn \(String(describing: variableName)) degrees."
         return "Turn \(value) degrees"
     }
     
@@ -26,16 +20,8 @@ class Turn: Statement {
         self.value = value
     }
     
-//    init(degrees: Int) {
-//        self.degrees = degrees
-//    }
-//
-//    init(variableName: String){
-//        self.variableName = variableName
-//    }
-//
     func interpret(turtle: Turtle, context: Context) -> Int? {
-        guard let interpretedValue = value.interpret(turtle: turtle, context: context) else { return 0 }
+        guard let interpretedValue = value.evaluate(context: context) else { return 0 }
         turtle.turn(degrees: interpretedValue)
         return interpretedValue
     }

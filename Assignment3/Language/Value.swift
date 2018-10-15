@@ -8,7 +8,7 @@
 
 import Foundation
 
-// TODO: If no extra stuff here then erase this and change values to be statements?
-protocol Value: Statement {
-//    var value: Int { get }
+protocol Value: CustomStringConvertible {
+    var description: String { get }
+    func evaluate(context: Context) -> Int?
 }

@@ -20,11 +20,7 @@ class Constant: Value {
         self.value = value
     }
     
-    func accept(visitor: Visitor) {
-        visitor.visit(self)
-    }
-    
-    func interpret(turtle: Turtle, context: Context) -> Int? {
+    func evaluate(context: Context) -> Int? {
         return value
     }
 }

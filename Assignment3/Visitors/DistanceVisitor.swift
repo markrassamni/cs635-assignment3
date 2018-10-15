@@ -13,6 +13,7 @@ class DistanceVisitor: Visitor {
     private(set) var distance: Int = 0
     
     override func visit(_ move: Move) {
+        // TODO instead of move.interpret do move.value.evaluate, same in other visitors
         guard let change = move.interpret(turtle: turtle, context: context) else { return }
         distance += change
     }
