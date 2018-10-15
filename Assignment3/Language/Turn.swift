@@ -10,7 +10,7 @@ import Foundation
 
 class Turn: Statement {
     
-    var value: Value
+    private(set) var value: Value
     
     var description: String {
         return "Turn \(value) degrees."

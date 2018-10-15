@@ -10,7 +10,7 @@ import Foundation
 
 class Memento {
     
-    private(set) var savedState = Dictionary<String, Any>()
+    private var savedState = Dictionary<String, Any>()
 
     func setState(name: String, value: Any){
         savedState[name] = value

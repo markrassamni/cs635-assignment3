@@ -10,7 +10,7 @@ import Foundation
 
 class Repeat: Statement {
 
-    private(set) var value: Value
+    private(set) var value: Value // TODO: Change all values to lets
     let statements: [Statement]
     
     var description: String {
