@@ -10,31 +10,56 @@ import Foundation
 
 class CaretakerVisitor: Visitor {
     
-    private(set) var mementos = [Memento]()
+    private(set) var turtle: Turtle
+    private(set) var context: Context
+    private(set) var mementos: [Memento]
 
-    override init(turtle: Turtle, context: Context) {
-        super.init(turtle: turtle, context: context)
+    init(turtle: Turtle, context: Context) {
+        self.turtle = turtle
+        self.context = context
+        mementos = [Memento]()
         saveState()
     }
     
-    override func visit(_ penUp: PenUp){
-        super.visit(penUp)
+    func visit(_ program: Program){
+        for statement in program.statements {
+            statement.accept(visitor: self)
+        }
+    }
+    
+    func visit(_ penUp: PenUp){
+        turtle.penUp()
         saveState()
     }
     
-    override func visit(_ penDown: PenDown){
-        super.visit(penDown)
+    func visit(_ penDown: PenDown){
+        turtle.penDown()
         saveState()
     }
     
-    override func visit(_ move: Move){
-        super.visit(move)
+    func visit(_ move: Move){
+        guard let value = move.value.evaluate(context: context) else { return }
+        turtle.move(distance: value)
         saveState()
     }
     
-    override func visit(_ turn: Turn){
-        super.visit(turn)
+    func visit(_ turn: Turn){
+        guard let value = turn.value.evaluate(context: context) else { return }
+        turtle.turn(degrees: value)
         saveState()
+    }
+    
+    func visit(_ repeatNode: Repeat){
+        guard let repeatCount = repeatNode.value.evaluate(context: context) else { return }
+        for _ in 0..<repeatCount {
+            for statement in repeatNode.statements {
+                statement.accept(visitor: self)
+            }
+        }
+    }
+    
+    func visit(_ assignment: Assignment){
+        context.setValue(for: assignment.variable.name, to: assignment.value)
     }
     
     func saveState() {

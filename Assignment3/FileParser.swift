@@ -54,7 +54,6 @@ class FileParser {
                 if let distance = Int(value){
                     statements.append(Move(value: Constant(distance)))
                 } else {
-//                    Move(value: Variable(name: value))
                     statements.append(Move(value: Variable(name: value)))
                 }
             case penUpCommand.lowercased():

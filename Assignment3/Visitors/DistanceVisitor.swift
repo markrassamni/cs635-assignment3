@@ -10,10 +10,49 @@ import Foundation
 
 class DistanceVisitor: Visitor {
     
-    private(set) var distance: Int = 0
+    private(set) var turtle: Turtle
+    private(set) var context: Context
+    private(set) var distance: Int
     
-    override func visit(_ move: Move) {
-        guard let change = move.value.evaluate(context: context) else { return }
+    init(turtle: Turtle, context: Context) {
+        self.turtle = turtle
+        self.context = context
+        distance = 0
+    }
+    
+    func visit(_ program: Program){
+        for statement in program.statements {
+            statement.accept(visitor: self)
+        }
+    }
+    
+    func visit(_ penUp: PenUp){
+        turtle.penUp()
+    }
+    
+    func visit(_ penDown: PenDown){
+        turtle.penDown()
+    }
+    
+    func visit(_ move: Move) {
+        guard let change = move.value.evaluate(context: context), turtle.isPenDown else { return }
         distance += change
+    }
+    
+    func visit(_ turn: Turn){
+        return
+    }
+    
+    func visit(_ repeatNode: Repeat){
+        guard let repeatCount = repeatNode.value.evaluate(context: context) else { return }
+        for _ in 0..<repeatCount {
+            for statement in repeatNode.statements {
+                statement.accept(visitor: self)
+            }
+        }
+    }
+    
+    func visit(_ assignment: Assignment){
+        context.setValue(for: assignment.variable.name, to: assignment.value)
     }
 }
