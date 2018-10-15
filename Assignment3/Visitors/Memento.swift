@@ -25,6 +25,7 @@ class Memento {
     }
 }
 
+// Used for validating unit tests
 extension Memento: Equatable{
     static func == (lhs: Memento, rhs: Memento) -> Bool {
         let leftArray = Array(lhs.savedState.values)

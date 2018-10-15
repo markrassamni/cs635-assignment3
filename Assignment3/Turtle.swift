@@ -72,6 +72,7 @@ class Turtle{
     }
 }
 
+// Used for validating unit tests
 extension Turtle: Equatable {
     static func == (lhs: Turtle, rhs: Turtle) -> Bool {
         return lhs.isPenDown == rhs.isPenDown && lhs.currentLocation == rhs.currentLocation && lhs.currentDirection == rhs.currentDirection

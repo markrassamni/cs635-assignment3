@@ -13,7 +13,7 @@ class Move: Statement {
     private(set) var value: Value
     
     var description: String {
-        return "Move \(value)"
+        return "Move \(value)."
     }
     
     init(value: Value) {

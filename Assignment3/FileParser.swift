@@ -10,7 +10,7 @@ import Foundation
 
 class FileParser {
     
-    private(set) var lines: [String]?
+    private var lines: [String]?
     private let moveCommand = "move"
     private let penUpCommand = "penUp"
     private let penDownCommand = "penDown"
@@ -81,9 +81,7 @@ class FileParser {
                 guard let repeatedStatements = convertToStatements(lines: repeatedLines) else { return nil }
                 if let count = Int(repeatCount){
                     statements.append(Repeat(statements: repeatedStatements, value: Constant(count)))
-//                    statements.append(Repeat(statements: repeatedStatements, repeatCount: count))
                 } else {
-//                    statements.append(Repeat(statements: repeatedStatements, variableName: repeatCount))
                     statements.append(Repeat(statements: repeatedStatements, value: Variable(name: repeatCount)))
                 }
             case assignment:

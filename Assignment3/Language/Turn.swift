@@ -13,7 +13,7 @@ class Turn: Statement {
     var value: Value
     
     var description: String {
-        return "Turn \(value) degrees"
+        return "Turn \(value) degrees."
     }
     
     init(value: Value) {

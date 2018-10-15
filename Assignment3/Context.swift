@@ -10,7 +10,7 @@ import Foundation
 
 class Context {
     
-    private (set) var values = Dictionary<String, Int>()
+    private var values = Dictionary<String, Int>()
     
     func getValue(for name: String) -> Int? {
         return values[name]

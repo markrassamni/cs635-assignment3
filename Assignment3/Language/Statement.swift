@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: Rename to Grammar.  and rename expressions to statement?
 protocol Statement: CustomStringConvertible {
     var description: String { get } // Swift toString()
     func accept(visitor: Visitor)

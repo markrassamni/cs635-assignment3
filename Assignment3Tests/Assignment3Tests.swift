@@ -18,9 +18,6 @@ class Assignment3Tests: XCTestCase {
     var distanceVisitor: DistanceVisitor!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // TODO: Test program.execute and visitor visit and compare last state to program
         fileParser = FileParser()
         turtle = Turtle()
         context = Context()
@@ -30,7 +27,6 @@ class Assignment3Tests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         fileParser = nil
         turtle = nil
         context = nil
@@ -230,5 +226,9 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(mementos[7], memento)
         memento.setState(name: turtle.locationState, value: Point(0,0))
         XCTAssertEqual(mementos[8], memento)
+    }
+    
+    func testProgramLastStateMatchCaretaker(){
+        // TODO: Test program.execute and visitor visit and compare last state to program
     }
 }
