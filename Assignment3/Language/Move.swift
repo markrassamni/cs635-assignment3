@@ -10,26 +10,38 @@ import Foundation
 
 class Move: Statement {
     
-    private(set) var distance: Int!
-    private(set) var variableName: String?
- 
+//    private(set) var distance: Int!
+//    private(set) var variableName: String?
+
+    private(set) var value: Value
+    
     var description: String {
-        if let dist = distance {
-            return "Move \(dist) units."
-        }
-        return "Move \(String(describing: variableName)) units."
+//        if let dist = distance {
+//            return "Move \(dist) units."
+//        }
+//        return "Move \(String(describing: variableName)) units."
+        return "Move \(value)"
     }
     
-    init?(distance: Int){
-        guard distance > 0 else { return nil }
-        self.distance = distance
+    init(value: Value) {
+        self.value = value
     }
     
-    init(variableName: String) {
-        self.variableName = variableName
-    }
+//    init?(distance: Int){
+//        guard distance > 0 else { return nil }
+//        self.distance = distance
+//    }
+//
+//    init(variableName: String) {
+//        self.variableName = variableName
+//    }
     
     func interpret(turtle: Turtle, context: Context) -> Int? {
+        guard let interpretedValue = value.interpret(turtle: turtle, context: context) else { return 0 }
+        turtle.move(distance: interpretedValue)
+        return interpretedValue
+        
+        /*
         if let value = distance {
             turtle.move(distance: value)
             return value
@@ -38,6 +50,7 @@ class Move: Statement {
             return value
         }
         return 0
+ */
     }
     
     func accept(visitor: Visitor) {

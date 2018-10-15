@@ -50,7 +50,17 @@ class Visitor {
         }
     }
     
+    func visit(_ variable: Variable){
+        let _ = variable.interpret(turtle: turtle, context: context)
+    }
+    
+    func visit(_ constant: Constant){
+        let _ = constant.interpret(turtle: turtle, context: context)
+    }
+
+    
     func visit(_ assignment: Assignment){
-        context.setValue(for: assignment.variable.name, to: assignment.variable.value)
+        let _ = assignment.interpret(turtle: turtle, context: context)
+//        context.setValue(for: assignment.variable.name, to: assignment.variable.value)
     }
 }

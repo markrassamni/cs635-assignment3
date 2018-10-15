@@ -51,10 +51,11 @@ class FileParser {
                 currentLine += 1
                 guard lineComponents.count == 2 else { return nil }
                 let value = lineComponents[1]
-                if let distance = Int(value), let move = Move(distance: distance){
-                    statements.append(move)
+                if let distance = Int(value){
+                    statements.append(Move(value: Constant(distance)))
                 } else {
-                    statements.append(Move(variableName: value))
+//                    Move(value: Variable(name: value))
+                    statements.append(Move(value: Variable(name: value)))
                 }
             case penUpCommand.lowercased():
                 currentLine += 1
@@ -67,9 +68,9 @@ class FileParser {
                 guard lineComponents.count == 2 else { return nil }
                 let value = lineComponents[1]
                 if let degrees = Int(value){
-                    statements.append(Turn(degrees: degrees))
+                    statements.append(Turn(value: Constant(degrees)))
                 } else {
-                    statements.append(Turn(variableName: value))
+                    statements.append(Turn(value: Variable(name: value)))
                 }
             case repeatCommand.lowercased():
                 guard lineComponents.count == 2 else { return nil }
@@ -80,14 +81,16 @@ class FileParser {
                 currentLine = endIndex + 1
                 guard let repeatedStatements = convertToStatements(lines: repeatedLines) else { return nil }
                 if let count = Int(repeatCount){
-                    statements.append(Repeat(statements: repeatedStatements, repeatCount: count))
+                    statements.append(Repeat(statements: repeatedStatements, value: Constant(count)))
+//                    statements.append(Repeat(statements: repeatedStatements, repeatCount: count))
                 } else {
-                    statements.append(Repeat(statements: repeatedStatements, variableName: repeatCount))
+//                    statements.append(Repeat(statements: repeatedStatements, variableName: repeatCount))
+                    statements.append(Repeat(statements: repeatedStatements, value: Variable(name: repeatCount)))
                 }
             case assignment:
                 currentLine += 1
                 guard let name = lineComponents.first, let value = Int(lineComponents[2]) else { return nil }
-                statements.append(Assignment(name: name, value: value))
+                statements.append(Assignment(variable: Variable(name: name), value: value))
             default:
                 return nil
             }

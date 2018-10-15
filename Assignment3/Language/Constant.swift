@@ -1,5 +1,5 @@
 //
-//  Variable.swift
+//  Constant.swift
 //  Assignment3
 //
 //  Created by Mark Rassamni on 10/14/18.
@@ -8,17 +8,16 @@
 
 import Foundation
 
-// TODO: Should this be a statement and accept visitor?
-class Variable: Value {
+class Constant: Value {
     
-    var name: String
+    var value: Int
     
-    var description: String{
-        return "\(name)"
+    var description: String {
+        return "\(value)"
     }
     
-    init(name: String) {
-        self.name = name
+    init(_ value: Int) {
+        self.value = value
     }
     
     func accept(visitor: Visitor) {
@@ -26,7 +25,6 @@ class Variable: Value {
     }
     
     func interpret(turtle: Turtle, context: Context) -> Int? {
-        return context.getValue(for: name)
-//        return self
+        return value
     }
 }

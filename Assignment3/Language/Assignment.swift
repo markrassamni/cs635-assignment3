@@ -10,22 +10,29 @@ import Foundation
 
 class Assignment: Statement {
     
-    private(set) var variable: (name: String, value: Int)
-    
+    private(set) var variable: Variable
+    private(set) var value: Int
+ 
     var description: String {
-        return "Assign \(variable.name) to \(variable.value)."
+        return "Assign \(variable.name) to \(value)."
     }
     
-    init(variable: (name: String, value: Int)) {
+//    init(variable: (name: String, value: Int)) {
+//        self.variable = variable
+//    }
+//
+//    convenience init(name: String, value: Int){
+//        self.init(variable: (name: name, value: value))
+//    }
+    
+    init(variable: Variable, value: Int) {
         self.variable = variable
-    }
-    
-    convenience init(name: String, value: Int){
-        self.init(variable: (name: name, value: value))
+        self.value = value
     }
     
     func interpret(turtle: Turtle, context: Context) -> Int? {
-        context.setValue(for: variable.name, to: variable.value)
+//        guard let interpretedValue = variable.interpret(turtle: turtle, context: context) else { return nil }
+        context.setValue(for: variable.name, to: value)
         return nil
     }
     

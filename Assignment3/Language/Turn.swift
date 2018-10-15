@@ -10,34 +10,34 @@ import Foundation
 
 class Turn: Statement {
     
-    private(set) var degrees: Int!
-    private(set) var variableName: String?
+//    private(set) var degrees: Int!
+//    private(set) var variableName: String?
+    var value: Value
     
     var description: String {
-        if let turnDegrees = degrees {
-            return "Turn \(turnDegrees) degrees."
-        }
-        return "Turn \(String(describing: variableName)) degrees."
+//        if let turnDegrees = degrees {
+//            return "Turn \(turnDegrees) degrees."
+//        }
+//        return "Turn \(String(describing: variableName)) degrees."
+        return "Turn \(value) degrees"
     }
     
-    init(degrees: Int) {
-        self.degrees = degrees
+    init(value: Value) {
+        self.value = value
     }
     
-    init(variableName: String){
-        self.variableName = variableName
-    }
-    
+//    init(degrees: Int) {
+//        self.degrees = degrees
+//    }
+//
+//    init(variableName: String){
+//        self.variableName = variableName
+//    }
+//
     func interpret(turtle: Turtle, context: Context) -> Int? {
-        if let value = degrees {
-            turtle.turn(degrees: value)
-            return value
-        }
-        if let name = variableName, let value = context.getValue(for: name) {
-            turtle.turn(degrees: value)
-            return value
-        }
-        return 0
+        guard let interpretedValue = value.interpret(turtle: turtle, context: context) else { return 0 }
+        turtle.turn(degrees: interpretedValue)
+        return interpretedValue
     }
     
     func accept(visitor: Visitor) {
