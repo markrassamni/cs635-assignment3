@@ -118,6 +118,31 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(distanceVisitor.distance, 40)
     }
     
+    func testRestoreState(){
+        testRestoreState(fileName: "test1.txt")
+        testRestoreState(fileName: "test2.txt")
+        testRestoreState(fileName: "test3.txt")
+        testRestoreState(fileName: "test4.txt")
+    }
+    
+    func testRestoreState(fileName: String){
+        let ast = fileParser.buildProgram(fromFile: fileName)
+        XCTAssertNotNil(ast)
+        ast!.accept(visitor: caretakerVisitor)
+        let randomIndex = Int(arc4random_uniform(UInt32(caretakerVisitor.mementos.count)))
+        let memento = caretakerVisitor.mementos[randomIndex]
+        ast!.turtle.restoreState(from: caretakerVisitor.mementos[randomIndex])
+        let turtle = ast!.turtle
+        guard let location = memento.getState(name: turtle.locationState) as? Point, let direction = memento.getState(name: turtle.directionState) as? Int, let isPenDown = memento.getState(name: turtle.penDownState) as? Bool else {
+            XCTAssertTrue(false)
+            return
+        }
+        XCTAssertEqual(turtle.currentLocation.x, location.x)
+        XCTAssertEqual(turtle.currentLocation.y, location.y)
+        XCTAssertEqual(turtle.currentDirection, direction)
+        XCTAssertEqual(turtle.isPenDown, isPenDown)
+    }
+    
     func testCaretakerVisitor(){
         let ast = fileParser.buildProgram(fromFile: "test1.txt")
         XCTAssertNotNil(ast)
