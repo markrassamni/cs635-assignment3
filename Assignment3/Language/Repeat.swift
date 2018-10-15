@@ -40,15 +40,7 @@ class Repeat: Statement {
         } else {
             return nil
         }
-        guard repeatCount > 0 else { return 0 }
-        
-        // TODO: Should this interpret all statements here? Just return a count and let others handle interpreting
-        for _ in 0..<repeatCount{
-            for statement in statements {
-                let _ = statement.interpret(turtle: turtle, context: context)
-            }
-        }
-        return repeatCount
+        return repeatCount < 0 ? 0 : repeatCount
     }
     
     func accept(visitor: Visitor) {

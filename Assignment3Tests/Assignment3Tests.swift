@@ -21,6 +21,7 @@ class Assignment3Tests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         //TODO: Test with repeat 1 times, repeat 0 times
+        // TODO: Test program.execute and visitor visit and compare last state to program
         caretakerVisitor = CaretakerVisitor(turtle: turtle, context: context)
         distanceVisitor = DistanceVisitor(turtle: turtle, context: context)
         
@@ -31,7 +32,6 @@ class Assignment3Tests: XCTestCase {
     }
     
     func testTurtleSquare(){
-        let turtle = Turtle()
         turtle.penDown()
         XCTAssertEqual(turtle.location().x, 0.0, accuracy: 0.001)
         XCTAssertEqual(turtle.location().y, 0.0, accuracy: 0.001)
@@ -59,7 +59,6 @@ class Assignment3Tests: XCTestCase {
     }
     
     func testTurtleMoveAndRotate(){
-        let turtle = Turtle()
         turtle.penDown()
         XCTAssertEqual(turtle.location().x, 0.0, accuracy: 0.001)
         XCTAssertEqual(turtle.location().y, 0.0, accuracy: 0.001)
@@ -72,6 +71,37 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(turtle.location().x, 22.99, accuracy: 0.001)
         XCTAssertEqual(turtle.location().y, 27.5, accuracy: 0.001)
         XCTAssertEqual(turtle.currentDirection, 30)
+    }
+    
+    func testProgram(){
+        var ast = fileParser.buildProgram(fromFile: "test1.txt")
+        XCTAssertNotNil(ast)
+        ast!.execute()
+        XCTAssertEqual(ast!.turtle.location().x, 109.84808, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 1.73648, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), 10)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast = fileParser.buildProgram(fromFile: "test2.txt")
+        XCTAssertNotNil(ast)
+        ast!.execute()
+        XCTAssertEqual(ast!.turtle.location().x, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), 180)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast = fileParser.buildProgram(fromFile: "test3.txt")
+        XCTAssertNotNil(ast)
+        ast!.execute()
+        XCTAssertEqual(ast!.turtle.location().x, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), 270)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast = fileParser.buildProgram(fromFile: "test4.txt")
+        XCTAssertNotNil(ast)
+        ast!.execute()
+        XCTAssertEqual(ast!.turtle.location().x, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), 360)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
     }
     
     func testDistanceVisitor(){
