@@ -27,6 +27,7 @@
 		F97CB8ED21740AF900D1471B /* test4.txt in Resources */ = {isa = PBXBuildFile; fileRef = F97CB8EC21740AF900D1471B /* test4.txt */; };
 		F97CB8EF2174564400D1471B /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8EE2174564400D1471B /* Value.swift */; };
 		F97CB8F12174568F00D1471B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CB8F02174568F00D1471B /* Constant.swift */; };
+		F996CE3221754EE800437501 /* test5.txt in Resources */ = {isa = PBXBuildFile; fileRef = F996CE3121754EE800437501 /* test5.txt */; };
 		F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E202162F98F008C016F /* AppDelegate.swift */; };
 		F9AB2E252162F990008C016F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E242162F990008C016F /* Assets.xcassets */; };
 		F9AB2E282162F990008C016F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E262162F990008C016F /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		F97CB8EC21740AF900D1471B /* test4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test4.txt; sourceTree = "<group>"; };
 		F97CB8EE2174564400D1471B /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		F97CB8F02174568F00D1471B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F996CE3121754EE800437501 /* test5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test5.txt; sourceTree = "<group>"; };
 		F9AB2E1D2162F98F008C016F /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E202162F98F008C016F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AB2E242162F990008C016F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				F97CB8E42172C6B100D1471B /* test2.txt */,
 				F97CB8E62172CCBE00D1471B /* test3.txt */,
 				F97CB8EC21740AF900D1471B /* test4.txt */,
+				F996CE3121754EE800437501 /* test5.txt */,
 			);
 			path = "Text Files";
 			sourceTree = "<group>";
@@ -167,8 +170,8 @@
 				F912C827216FC96B00531D80 /* Program.swift */,
 				F92226AB2163042800318BB7 /* Context.swift */,
 				F92226AD21634A3A00318BB7 /* FileParser.swift */,
-				F9AB2E202162F98F008C016F /* AppDelegate.swift */,
 				F9AB2E242162F990008C016F /* Assets.xcassets */,
+				F9AB2E202162F98F008C016F /* AppDelegate.swift */,
 				F9AB2E262162F990008C016F /* Main.storyboard */,
 				F9AB2E292162F990008C016F /* Info.plist */,
 				F9AB2E2A2162F990008C016F /* Assignment3.entitlements */,
@@ -271,6 +274,7 @@
 				F97CB8E72172CCBE00D1471B /* test3.txt in Resources */,
 				F97CB8E52172C6B100D1471B /* test2.txt in Resources */,
 				F9AB2E282162F990008C016F /* Main.storyboard in Resources */,
+				F996CE3221754EE800437501 /* test5.txt in Resources */,
 				F9D653B6217138E200B028E6 /* test1.txt in Resources */,
 				F97CB8ED21740AF900D1471B /* test4.txt in Resources */,
 			);

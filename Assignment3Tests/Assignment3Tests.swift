@@ -104,6 +104,16 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(ast!.turtle.isPenDown, true)
     }
     
+    func testRepeatNegativeAndZero(){
+        let ast = fileParser.buildProgram(fromFile: "test5.txt")
+        XCTAssertNotNil(ast)
+        ast!.interpret()
+        XCTAssertEqual(ast!.turtle.location().x, 5, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), 0)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+    }
+    
     func testDistanceVisitor(){
         let ast = fileParser.buildProgram(fromFile: "test2.txt")
         XCTAssertNotNil(ast)
