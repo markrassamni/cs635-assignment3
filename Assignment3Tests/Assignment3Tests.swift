@@ -11,17 +11,19 @@ import XCTest
 
 class Assignment3Tests: XCTestCase {
     
-    let fileParser = FileParser()
-    let turtle = Turtle()
-    let context = Context()
+    var fileParser: FileParser!
+    var turtle: Turtle!
+    var context: Context!
     var caretakerVisitor: CaretakerVisitor!
     var distanceVisitor: DistanceVisitor!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        //TODO: Test with repeat 1 times, repeat 0 times
         // TODO: Test program.execute and visitor visit and compare last state to program
+        fileParser = FileParser()
+        turtle = Turtle()
+        context = Context()
         caretakerVisitor = CaretakerVisitor(turtle: turtle, context: context)
         distanceVisitor = DistanceVisitor(turtle: turtle, context: context)
         
@@ -112,6 +114,10 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
         XCTAssertEqual(ast!.turtle.direction(), 0)
         XCTAssertEqual(ast!.turtle.isPenDown, true)
+    }
+    
+    func testReassignVariable(){
+        // TODO: Implement
     }
     
     func testDistanceVisitor(){
