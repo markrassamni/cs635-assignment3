@@ -28,18 +28,9 @@ class Program{
         visitor.visit(self)
     }
     
-    // TODO: be able to do statement.interpret on a repeat and work properly
-    func execute(){
-        interpret(statements: statements)
-    }
-    
-    private func interpret(statements: [Statement], repeatCount: Int = 1){
-        for _ in 0..<repeatCount {
-            for statement in statements {
-                let value = statement.interpret(turtle: turtle, context: context)
-                guard let repeatStatements = (statement as? Repeat)?.statements, let count = value else { continue }
-                interpret(statements: repeatStatements, repeatCount: count)
-            }
+    func interpret(){
+        for statement in statements {
+            statement.interpret(turtle: turtle, context: context)
         }
     }
 }

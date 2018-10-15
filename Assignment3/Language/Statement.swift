@@ -12,5 +12,5 @@ import Foundation
 protocol Statement: CustomStringConvertible {
     var description: String { get } // Swift toString()
     func accept(visitor: Visitor)
-    func interpret(turtle: Turtle, context: Context) -> Int? // TODO: Return nothing. evaluate value first and then interpret...
+    func interpret(turtle: Turtle, context: Context)
 }

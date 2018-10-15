@@ -22,9 +22,14 @@ class Repeat: Statement {
         self.value = value
     }
 
-    func interpret(turtle: Turtle, context: Context) -> Int? {
-        guard let interpretedValue = value.evaluate(context: context) else { return 0 }
-        return interpretedValue < 0 ? 0 : interpretedValue
+    func interpret(turtle: Turtle, context: Context) {
+        guard var count = value.evaluate(context: context) else { return }
+        if count < 0 { count = 0 }
+        for _ in 0..<count {
+            for statement in statements {
+                statement.interpret(turtle: turtle, context: context)
+            }
+        }
     }
     
     func accept(visitor: Visitor) {

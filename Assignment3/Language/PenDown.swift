@@ -18,8 +18,7 @@ class PenDown: Statement {
         visitor.visit(self)
     }
     
-    func interpret(turtle: Turtle, context: Context) -> Int? {
+    func interpret(turtle: Turtle, context: Context) {
         turtle.penDown()
-        return nil
     }
 }

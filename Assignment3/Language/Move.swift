@@ -20,10 +20,9 @@ class Move: Statement {
         self.value = value
     }
     
-    func interpret(turtle: Turtle, context: Context) -> Int? {
-        guard let interpretedValue = value.evaluate(context: context) else { return 0 }
-        turtle.move(distance: interpretedValue)
-        return interpretedValue
+    func interpret(turtle: Turtle, context: Context) {
+        guard let distance = value.evaluate(context: context) else { return }
+        turtle.move(distance: distance)
     }
     
     func accept(visitor: Visitor) {

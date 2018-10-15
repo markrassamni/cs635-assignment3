@@ -20,10 +20,9 @@ class Turn: Statement {
         self.value = value
     }
     
-    func interpret(turtle: Turtle, context: Context) -> Int? {
-        guard let interpretedValue = value.evaluate(context: context) else { return 0 }
-        turtle.turn(degrees: interpretedValue)
-        return interpretedValue
+    func interpret(turtle: Turtle, context: Context) {
+        guard let degrees = value.evaluate(context: context) else { return }
+        turtle.turn(degrees: degrees)
     }
     
     func accept(visitor: Visitor) {
