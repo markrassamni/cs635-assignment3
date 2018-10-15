@@ -30,25 +30,7 @@ class Repeat: Statement {
         self.statements = statements
         self.variableName = variableName
     }
-    
-    /*
-    func interpret(turtle: Turtle, context: Context) {
-        let repeatCount: Int
-        if let value = count {
-            repeatCount = value
-        } else if let name = variableName, let value = context.getValue(for: name) {
-            repeatCount = value
-        } else {
-            repeatCount = 0
-        }
-        for _ in 0..<repeatCount {
-            for statement in statements {
-                statement.interpret(turtle: turtle, context: context)
-            }
-        }
-    }
- */
-    
+
     func interpret(turtle: Turtle, context: Context) -> Int? {
         let repeatCount: Int
         if let value = count {
@@ -58,7 +40,15 @@ class Repeat: Statement {
         } else {
             return nil
         }
-        return repeatCount < 1 ? 0 : repeatCount
+        guard repeatCount > 0 else { return 0 }
+        
+        // TODO: Should this interpret all statements here? Just return a count and let others handle interpreting
+        for _ in 0..<repeatCount{
+            for statement in statements {
+                let _ = statement.interpret(turtle: turtle, context: context)
+            }
+        }
+        return repeatCount
     }
     
     func accept(visitor: Visitor) {

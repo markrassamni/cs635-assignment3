@@ -37,7 +37,7 @@ class Turn: Statement {
             turtle.turn(degrees: value)
             return value
         }
-        return nil
+        return 0
     }
     
     func accept(visitor: Visitor) {

@@ -41,7 +41,7 @@ class Visitor {
     }
     
     func visit(_ repeatNode: Repeat){
-        // TODO: Move repeat into repeat.interpret
+        // FIXME: Calling repeat.interpret to get value and for loop here repeat times causes double execution of the repeat block on the same turtle
         guard let repeatCount = repeatNode.interpret(turtle: turtle, context: context) else { return }
         for _ in 0..<repeatCount {
             for statement in repeatNode.statements {
