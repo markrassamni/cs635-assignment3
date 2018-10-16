@@ -19,13 +19,11 @@ class Assignment3Tests: XCTestCase {
 
     override func setUp() {
         // TODO: Add visitors to all testing where possible
-        // When repeat 5, end with no body, make sure code will not fail if statements is empty
         fileParser = FileParser()
         turtle = Turtle()
         context = Context()
-        caretakerVisitor = CaretakerVisitor(turtle: turtle, context: context)
-        distanceVisitor = DistanceVisitor(turtle: turtle, context: context)
-        
+        caretakerVisitor = CaretakerVisitor(turtle: Turtle(), context: context)
+        distanceVisitor = DistanceVisitor(turtle: Turtle(), context: context)
     }
 
     override func tearDown() {
@@ -119,6 +117,20 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(ast!.turtle.isPenDown, true)
         ast?.accept(visitor: distanceVisitor)
         XCTAssertEqual(distanceVisitor.distance, 5)
+    }
+    
+    func testRepeatWithoutBody(){
+        let ast = fileParser.buildProgram(fromFile: "repeatNoBody.txt")
+        XCTAssertNotNil(ast)
+        ast!.interpret()
+        XCTAssertEqual(ast!.turtle.location().x, 50)
+        XCTAssertEqual(ast!.turtle.location().y, 0)
+        ast!.accept(visitor: caretakerVisitor)
+        let mementoLocation = caretakerVisitor.mementos.last!.getState(name: turtle.locationState) as! Point
+        XCTAssertEqual(mementoLocation.x, 50)
+        XCTAssertEqual(mementoLocation.y, 0)
+        ast!.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 50)
     }
     
     func testReassignVarInUnexecutedRepeat(){

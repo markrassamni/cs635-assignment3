@@ -1,0 +1,7 @@
+#side = 50000
+repeat #side
+end
+#length = 50
+move #side
+pendown
+move #length
