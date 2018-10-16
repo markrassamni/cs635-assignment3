@@ -18,7 +18,6 @@ class Assignment3Tests: XCTestCase {
     var distanceVisitor: DistanceVisitor!
 
     override func setUp() {
-        // TODO: Add visitors to all testing where possible
         fileParser = FileParser()
         turtle = Turtle()
         context = Context()
@@ -117,6 +116,14 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(ast!.turtle.isPenDown, true)
         ast?.accept(visitor: distanceVisitor)
         XCTAssertEqual(distanceVisitor.distance, 5)
+        ast!.accept(visitor: caretakerVisitor)
+        let location = caretakerVisitor.mementos.last!.getState(name: turtle.locationState) as! Point
+        let direction = caretakerVisitor.mementos.last!.getState(name: turtle.directionState) as! Int
+        let isPenDown = caretakerVisitor.mementos.last!.getState(name: turtle.penDownState) as! Bool
+        XCTAssertEqual(ast!.turtle.location().x, location.x, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, location.y, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), direction)
+        XCTAssertEqual(ast!.turtle.isPenDown, isPenDown)
     }
     
     func testRepeatWithoutBody(){
