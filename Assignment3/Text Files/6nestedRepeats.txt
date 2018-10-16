@@ -1,0 +1,28 @@
+penup
+repeat 2
+    pendown
+    move 0005
+    turn -360
+    #side = 10
+    repeat 2
+        penup
+        turn 360
+        repeat 2
+            pendown
+            move #side
+            repeat 1
+                turn 180
+                repeat -5
+                    penup
+                    move 6000
+                    turn -9012
+                    repeat 5
+                    end
+                    pendown
+                    #side = 5000
+                    move #side
+                end
+            end
+        end
+    end
+end

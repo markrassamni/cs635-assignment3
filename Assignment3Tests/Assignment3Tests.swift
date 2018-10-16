@@ -19,6 +19,9 @@ class Assignment3Tests: XCTestCase {
 
     override func setUp() {
         // TODO: Add visitors to all testing where possible
+        // When repeat 5, end with no body, make sure code will not fail if statements is empty
+        // Test reassigning a var in a repeat loop never executed and see value if using it after loop
+        // #side = 5 repeat0 #side = 10 end move #side
         fileParser = FileParser()
         turtle = Turtle()
         context = Context()
@@ -138,11 +141,22 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(lastState.getState(name: turtle.penDownState) as! Bool, true)
     }
     
-    func test5NestedRepeats(){
-        // TODO: Implement, have to add to file still
-        let ast = fileParser.buildProgram(fromFile: "5nestedRepeats.txt")
+    func test6NestedRepeats(){
+        let ast = fileParser.buildProgram(fromFile: "6nestedRepeats.txt")
         XCTAssertNotNil(ast)
         ast!.interpret()
+        ast?.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 90)
+        XCTAssertEqual(ast!.turtle.direction(), 2160)
+        XCTAssertEqual(ast!.turtle.location().x, 10, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast?.accept(visitor: caretakerVisitor)
+        let lastMemento = caretakerVisitor.mementos.last!
+        XCTAssertEqual(ast!.turtle.location().x, (lastMemento.getState(name: turtle.locationState) as! Point).x)
+        XCTAssertEqual(ast!.turtle.location().y, (lastMemento.getState(name: turtle.locationState) as! Point).y)
+        XCTAssertEqual(ast!.turtle.direction(), lastMemento.getState(name: turtle.directionState) as! Int)
+        XCTAssertEqual(ast!.turtle.isPenDown, lastMemento.getState(name: turtle.penDownState) as! Bool)
     }
     
     func testReassignVariable(){
@@ -268,9 +282,5 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(mementos[7], memento)
         memento.setState(name: turtle.locationState, value: Point(0,0))
         XCTAssertEqual(mementos[8], memento)
-    }
-    
-    func testProgramLastStateMatchCaretaker(){
-        // TODO: Test program.execute and visitor visit and compare last state to program
     }
 }
