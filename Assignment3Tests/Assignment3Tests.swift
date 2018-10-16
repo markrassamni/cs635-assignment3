@@ -124,7 +124,27 @@ class Assignment3Tests: XCTestCase {
     }
     
     func testReassignVariable(){
-        // TODO: Implement
+        let ast = fileParser.buildProgram(fromFile: "test6.txt")
+        XCTAssertNotNil(ast)
+        ast!.interpret()
+        XCTAssertEqual(ast!.turtle.location().x, 50, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.direction(), 0)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast?.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 50)
+        ast?.accept(visitor: caretakerVisitor)
+        let memento = caretakerVisitor.mementos.last
+        XCTAssertNotNil(memento)
+        XCTAssertEqual(ast!.turtle, caretakerVisitor.turtle)
+        guard let direction = memento?.getState(name: caretakerVisitor.turtle.directionState) as? Int, let location = memento?.getState(name: caretakerVisitor.turtle.locationState) as? Point, let isPenDown = memento?.getState(name: caretakerVisitor.turtle.penDownState) as? Bool else {
+            XCTAssertTrue(false)
+            return
+        }
+        XCTAssertEqual(direction, ast!.turtle.direction())
+        XCTAssertEqual(location.x, ast!.turtle.location().x)
+        XCTAssertEqual(location.y, ast!.turtle.location().y)
+        XCTAssertEqual(isPenDown, ast!.turtle.isPenDown)
     }
     
     func testDistanceVisitor(){
