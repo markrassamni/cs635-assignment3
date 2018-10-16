@@ -20,8 +20,6 @@ class Assignment3Tests: XCTestCase {
     override func setUp() {
         // TODO: Add visitors to all testing where possible
         // When repeat 5, end with no body, make sure code will not fail if statements is empty
-        // Test reassigning a var in a repeat loop never executed and see value if using it after loop
-        // #side = 5 repeat0 #side = 10 end move #side
         fileParser = FileParser()
         turtle = Turtle()
         context = Context()
@@ -121,6 +119,20 @@ class Assignment3Tests: XCTestCase {
         XCTAssertEqual(ast!.turtle.isPenDown, true)
         ast?.accept(visitor: distanceVisitor)
         XCTAssertEqual(distanceVisitor.distance, 5)
+    }
+    
+    func testReassignVarInUnexecutedRepeat(){
+        let ast = fileParser.buildProgram(fromFile: "reassignInRepeat0.txt")
+        XCTAssertNotNil(ast)
+        ast!.interpret()
+        XCTAssertEqual(ast!.turtle.location().x, 20)
+        XCTAssertEqual(ast!.turtle.location().y, 0)
+        ast!.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 20)
+        ast!.accept(visitor: caretakerVisitor)
+        let mementoLocation = caretakerVisitor.mementos.last!.getState(name: turtle.locationState) as! Point
+        XCTAssertEqual(mementoLocation.x, 20)
+        XCTAssertEqual(mementoLocation.y, 0)
     }
     
     func testNestedRepeat(){
