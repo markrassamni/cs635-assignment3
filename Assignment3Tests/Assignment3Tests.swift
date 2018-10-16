@@ -121,34 +121,28 @@ class Assignment3Tests: XCTestCase {
     }
     
     func testNestedRepeat(){
-        // TODO: Implement, also do with visitor?
         let ast = fileParser.buildProgram(fromFile: "nestedRepeat.txt")
         XCTAssertNotNil(ast)
         ast!.interpret()
-        // 20 0
         XCTAssertEqual(ast!.turtle.location().x, 20, accuracy: 0.0001)
         XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
-        
-        /*
-         #side = 10
-         penDown
-         repeat 1
-         move #side
-         penup
-         repeat 2
-         penDoWn
-         #side = 5
-         move 10
-         penup
-         turn 90
-         end
-         turn 90
-         pendown
-         move #side
-         end
-         move #side
-        */
-        
+        XCTAssertEqual(ast!.turtle.direction(), 270)
+        XCTAssertEqual(ast!.turtle.isPenDown, true)
+        ast?.accept(visitor: distanceVisitor)
+        XCTAssertEqual(distanceVisitor.distance, 40)
+        ast?.accept(visitor: caretakerVisitor)
+        let lastState = caretakerVisitor.mementos.last!
+        XCTAssertEqual(lastState.getState(name: turtle.directionState) as! Int, 270)
+        XCTAssertEqual((lastState.getState(name: turtle.locationState) as! Point).x, 20)
+        XCTAssertEqual((lastState.getState(name: turtle.locationState) as! Point).y, 0)
+        XCTAssertEqual(lastState.getState(name: turtle.penDownState) as! Bool, true)
+    }
+    
+    func test5NestedRepeats(){
+        // TODO: Implement, have to add to file still
+        let ast = fileParser.buildProgram(fromFile: "5nestedRepeats.txt")
+        XCTAssertNotNil(ast)
+        ast!.interpret()
     }
     
     func testReassignVariable(){

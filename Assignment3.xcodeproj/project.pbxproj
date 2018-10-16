@@ -30,6 +30,7 @@
 		F996CE3221754EE800437501 /* test5.txt in Resources */ = {isa = PBXBuildFile; fileRef = F996CE3121754EE800437501 /* test5.txt */; };
 		F996CE342175518200437501 /* test6.txt in Resources */ = {isa = PBXBuildFile; fileRef = F996CE332175518200437501 /* test6.txt */; };
 		F996CE36217582EC00437501 /* nestedRepeat.txt in Resources */ = {isa = PBXBuildFile; fileRef = F996CE35217582EB00437501 /* nestedRepeat.txt */; };
+		F996CE382175C18500437501 /* 5nestedRepeats.txt in Resources */ = {isa = PBXBuildFile; fileRef = F996CE372175C18500437501 /* 5nestedRepeats.txt */; };
 		F9AB2E212162F98F008C016F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AB2E202162F98F008C016F /* AppDelegate.swift */; };
 		F9AB2E252162F990008C016F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E242162F990008C016F /* Assets.xcassets */; };
 		F9AB2E282162F990008C016F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AB2E262162F990008C016F /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		F996CE3121754EE800437501 /* test5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test5.txt; sourceTree = "<group>"; };
 		F996CE332175518200437501 /* test6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test6.txt; sourceTree = "<group>"; };
 		F996CE35217582EB00437501 /* nestedRepeat.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = nestedRepeat.txt; sourceTree = "<group>"; };
+		F996CE372175C18500437501 /* 5nestedRepeats.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 5nestedRepeats.txt; sourceTree = "<group>"; };
 		F9AB2E1D2162F98F008C016F /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AB2E202162F98F008C016F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AB2E242162F990008C016F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				F996CE3121754EE800437501 /* test5.txt */,
 				F996CE332175518200437501 /* test6.txt */,
 				F996CE35217582EB00437501 /* nestedRepeat.txt */,
+				F996CE372175C18500437501 /* 5nestedRepeats.txt */,
 			);
 			path = "Text Files";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				F996CE342175518200437501 /* test6.txt in Resources */,
 				F9D653B6217138E200B028E6 /* test1.txt in Resources */,
 				F97CB8ED21740AF900D1471B /* test4.txt in Resources */,
+				F996CE382175C18500437501 /* 5nestedRepeats.txt in Resources */,
 				F996CE36217582EC00437501 /* nestedRepeat.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
