@@ -72,11 +72,97 @@ class FileParser {
                     statements.append(Turn(value: Variable(name: value)))
                 }
             case repeatCommand.lowercased():
+                // FIXME: Bug when nesting repeats, getting first "end" gets end for 2nd repeat not for first
                 guard lineComponents.count == 2 else { return nil }
                 let repeatCount = lineComponents[1]
-                let optionalEndIndex = lines.enumerated().filter{ $0.element.lowercased() == endRepeat.lowercased() && $0.offset > currentLine && $0.offset < lines.count}.map{$0.offset}.first
-                guard let endIndex = optionalEndIndex else { return nil }
-                let repeatedLines = lines.enumerated().filter{$0.offset > currentLine && $0.offset < endIndex }.map{$0.element}
+                
+                
+                var endIndices = lines.enumerated().filter{ $0.element.lowercased().components(separatedBy: " ").filter {$0 != ""}.first == endRepeat.lowercased() && $0.offset > currentLine && $0.offset < lines.count}.map{$0.offset}
+                let repeatIndices = lines.enumerated().filter{ $0.element.lowercased().components(separatedBy: " ").filter {$0 != ""}.first  == repeatCommand.lowercased() && $0.offset > currentLine && $0.offset < lines.count}.map { $0.offset }
+                
+                // TODO: this end index is wrong. Could have our end come first and all repeats after with their ends
+                // Want to find first end that has no repeat before it
+//                let endIndex = endIndices[repeatIndices.count]
+                
+                /*
+                var endIndex: Int
+                
+                if repeatIndices.count == 0 || endIndices.count == 1 {
+                    endIndex = endIndices[0]
+                } else if let endFirst = endIndices.first, let repeatFirst = repeatIndices.first, endFirst < repeatFirst {
+                    endIndex = endFirst
+                } else if repeatIndices.count >= endIndices.count {
+                    for (iteration, index) in endIndices.enumerated() {
+                        if endIndices[iteration] < repeatIndices[iteration] {
+                            endIndex = endIndices[iteration]
+                        }
+                    }
+                }
+                 */
+                
+                // End 7 15
+                // Repeat 9
+                // True end 7
+                
+                // End 13 17
+                // Repeat 7
+                // True end 17
+                
+                // Top = first, bottom = last
+                
+                // Look for next repeat or next end, if find repeat skip next end, if find end use it
+                
+                // For every repeat I find remove the next end after it in endIndices
+                
+                // Cant just find this repeats end because incrementing cvurrentLine to this end will skip inner repeats? - False - repeat recalls this func, should be ok.. ?
+                
+//                for (repeatIter, repeatIndex) in repeatIndices.enumerated() {
+//                    for (endIter, endIndex) in endIndices.enumerated(){
+//
+//                    }
+//                }
+                
+                // Current = 5
+                // End = 7 12
+                // Repeat = nil
+                
+                
+                for repeatIndex in repeatIndices {
+                    if let index = endIndices.index(where: { $0 > repeatIndex}) {
+                        endIndices.remove(at: index)
+                    }
+                }
+                guard let endIndex = endIndices.first else { return nil }
+                
+                
+                
+                
+                
+                
+                // Need first end with no repeat in between current and end
+                
+                
+//                if endIndices.count <= repeatIndices.count {
+//                    endIndex = endIndices.enumerated().filter { $0.element < repeatIndices[$0.offset] }.map {$0.element}[0]
+//                } else {
+//                    endIndex = repeatIndices.enumerated().filter { $0.element > endIndices[$0.offset] }.map {endIndices[$0.offset]}[0]
+//                }
+                
+                // ends at 7 15
+                // repeat at 9
+                // want end at 7
+                
+                // ends at 13 17
+                // repeat at 7
+                // want end at 17
+                
+                
+                
+                
+//                let optionalEndIndex = lines.enumerated().filter{ $0.element.lowercased() == endRepeat.lowercased() && $0.offset > currentLine && $0.offset < lines.count}.map{$0.offset}.first
+//                guard let endIndex = optionalEndIndex else { return nil }
+                
+                let repeatedLines = lines.enumerated().filter{$0.offset > currentLine && $0.offset < endIndex && $0.element.lowercased() != endRepeat.lowercased() }.map{$0.element}
                 currentLine = endIndex + 1
                 guard let repeatedStatements = convertToStatements(lines: repeatedLines) else { return nil }
                 if let count = Int(repeatCount){

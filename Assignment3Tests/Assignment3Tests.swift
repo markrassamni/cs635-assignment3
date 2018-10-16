@@ -18,6 +18,7 @@ class Assignment3Tests: XCTestCase {
     var distanceVisitor: DistanceVisitor!
 
     override func setUp() {
+        // TODO: Add visitors to all testing where possible
         fileParser = FileParser()
         turtle = Turtle()
         context = Context()
@@ -121,6 +122,33 @@ class Assignment3Tests: XCTestCase {
     
     func testNestedRepeat(){
         // TODO: Implement, also do with visitor?
+        let ast = fileParser.buildProgram(fromFile: "nestedRepeat.txt")
+        XCTAssertNotNil(ast)
+        ast!.interpret()
+        // 20 0
+        XCTAssertEqual(ast!.turtle.location().x, 20, accuracy: 0.0001)
+        XCTAssertEqual(ast!.turtle.location().y, 0, accuracy: 0.0001)
+        
+        /*
+         #side = 10
+         penDown
+         repeat 1
+         move #side
+         penup
+         repeat 2
+         penDoWn
+         #side = 5
+         move 10
+         penup
+         turn 90
+         end
+         turn 90
+         pendown
+         move #side
+         end
+         move #side
+        */
+        
     }
     
     func testReassignVariable(){
