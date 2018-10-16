@@ -32,13 +32,13 @@ class CaretakerVisitor: Visitor {
     }
     
     func visit(_ move: Move){
-        guard let value = move.value.evaluate(context: context) else { return }
+        guard let value = move.distance.evaluate(context: context) else { return }
         turtle.move(distance: value)
         saveState()
     }
     
     func visit(_ turn: Turn){
-        guard let value = turn.value.evaluate(context: context) else { return }
+        guard let value = turn.degrees.evaluate(context: context) else { return }
         turtle.turn(degrees: value)
         saveState()
     }

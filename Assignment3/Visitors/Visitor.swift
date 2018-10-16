@@ -28,7 +28,7 @@ extension Visitor {
     }
 
     func visit(_ repeatNode: Repeat){
-        guard var repeatCount = repeatNode.value.evaluate(context: context) else { return }
+        guard var repeatCount = repeatNode.repeatCount.evaluate(context: context) else { return }
         if repeatCount < 0 { repeatCount = 0 }
         for _ in 0..<repeatCount {
             for statement in repeatNode.statements {

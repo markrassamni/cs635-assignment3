@@ -10,18 +10,18 @@ import Foundation
 
 class Move: Statement {
 
-    let value: Value
+    let distance: Value
     
     var description: String {
-        return "Move \(value)."
+        return "Move \(distance)."
     }
     
     init(value: Value) {
-        self.value = value
+        self.distance = value
     }
     
     func interpret(turtle: Turtle, context: Context) {
-        guard let distance = value.evaluate(context: context) else { return }
+        guard let distance = distance.evaluate(context: context) else { return }
         turtle.move(distance: distance)
     }
     

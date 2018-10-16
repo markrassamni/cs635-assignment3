@@ -10,20 +10,20 @@ import Foundation
 
 class Repeat: Statement {
 
-    let value: Value
+    let repeatCount: Value
     let statements: [Statement]
     
     var description: String {
-        return "Repeat \(statements) \(value) times."
+        return "Repeat \(statements) \(repeatCount) times."
     }
     
     init(statements: [Statement], value: Value) {
         self.statements = statements
-        self.value = value
+        self.repeatCount = value
     }
 
     func interpret(turtle: Turtle, context: Context) {
-        guard var count = value.evaluate(context: context) else { return }
+        guard var count = repeatCount.evaluate(context: context) else { return }
         if count < 0 { count = 0 }
         for _ in 0..<count {
             for statement in statements {

@@ -29,7 +29,7 @@ class DistanceVisitor: Visitor {
     }
     
     func visit(_ move: Move) {
-        guard let change = move.value.evaluate(context: context), turtle.isPenDown else { return }
+        guard let change = move.distance.evaluate(context: context), turtle.isPenDown else { return }
         distance += change
     }
     

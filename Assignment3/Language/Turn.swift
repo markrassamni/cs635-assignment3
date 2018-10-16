@@ -10,18 +10,18 @@ import Foundation
 
 class Turn: Statement {
     
-    let value: Value
+    let degrees: Value
     
     var description: String {
-        return "Turn \(value) degrees."
+        return "Turn \(degrees) degrees."
     }
     
     init(value: Value) {
-        self.value = value
+        self.degrees = value
     }
     
     func interpret(turtle: Turtle, context: Context) {
-        guard let degrees = value.evaluate(context: context) else { return }
+        guard let degrees = degrees.evaluate(context: context) else { return }
         turtle.turn(degrees: degrees)
     }
     
